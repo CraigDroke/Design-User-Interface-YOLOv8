@@ -13,6 +13,8 @@ We are currently working on setting up the correct requirements.txt file for the
     - pip install ultralytics
 5. Install Other Requirements, like GRADIO. This is implemented but will be continually updated.
     - pip install -r requirements.txt
+### Other Recommendations
+1. When you run any of the examples, at least 1 weights file (.pt) will be downloaded. It is reccomended to create a "weights" folder in the directory to keep track of these.
 
 ## Directly from Ultralytics Github
 See below for a quickstart installation and usage example, and see the [YOLOv8 Docs](https://docs.ultralytics.com) for full documentation on training, validation, prediction and deployment.
