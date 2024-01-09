@@ -1,0 +1,3 @@
+# Ignore personal vscode setting files
+.vscode/*
+# Ignore weight files because they are too large
