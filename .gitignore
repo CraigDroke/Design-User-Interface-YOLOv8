@@ -2,3 +2,8 @@
 .vscode/*
 # Ignore weight files because they are too large
 weights/*
+# Ignore gradio generated flag files
+flagged/*
+
+# Other ignores
+**/__pycache__/
