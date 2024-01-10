@@ -4,6 +4,8 @@
 weights/*
 # Ignore gradio generated flag files
 flagged/*
+# Ignore runs from training / detecting
+runs/*
 
 # Other ignores
 **/__pycache__/

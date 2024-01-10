@@ -1,7 +1,7 @@
 import gradio as gr
-from interface.interface_methods import interface_detect
+from interface.main_interface_methods import interface_detect
 
-def build_interface():
+def build_main_interface():
     # Gradio Interface Code
     with gr.Blocks(title="YOLOv8 Interface",theme=gr.themes.Base()) as demo:
         gr.Markdown(
