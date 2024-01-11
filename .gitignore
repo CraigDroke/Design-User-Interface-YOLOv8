@@ -6,6 +6,10 @@ weights/*
 flagged/*
 # Ignore runs from training / detecting
 runs/*
+ultralytics/*
+# Ignore wandb files
+wandb/*
 
 # Other ignores
 **/__pycache__/
+Images/*

@@ -1,9 +1,10 @@
 import gradio as gr
 from interface.detect_interface_methods import interface_detect
+from interface.defaults import shared_theme
 
 def build_detect_interface():
     # Gradio Interface Code
-    with gr.Blocks(title="YOLOv8 Interface",theme=gr.themes.Base()) as demo:
+    with gr.Blocks(theme=shared_theme) as demo:
         gr.Markdown(
         """
         # Image & Video Interface for YOLOv8

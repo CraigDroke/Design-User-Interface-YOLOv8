@@ -10,7 +10,7 @@ We are currently working on setting up the correct requirements.txt file for the
 3. Install PyTorch. The code below is specified for Windows, Conda, Python, & CUDA 11.8. If you need a different build, go to the [PyTorch website](https://pytorch.org/get-started/locally/).
     - conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 4. Install Ultralytics.
-    - pip install ultralytics
+    - pip install ultralytics==8.0.186
 5. Install Other Requirements, like GRADIO. This is implemented but will be continually updated.
     - pip install -r requirements.txt
 ### Other Recommendations
