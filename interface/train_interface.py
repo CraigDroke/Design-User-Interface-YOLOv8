@@ -1,6 +1,6 @@
 import gradio as gr
 from interface.defaults import shared_theme
-from interface.train_interface_methods import interface_train
+from interface.train_interface_methods import interface_train, interface_login
 
 def build_train_interface():
     with gr.Blocks(theme=shared_theme) as demo:
@@ -23,13 +23,15 @@ def build_train_interface():
             official_dataset = gr.Dropdown(label="Dataset",choices=["coco128"],visible=True,interactive=True)
         with gr.Row() as output_row:
             logger = gr.Radio(choices=['WANDB', 'ClearML', 'Tensorboard'],value='WANDB',show_label=True,interactive=True,visible=True,
-                              label="Logger",info="Choose 'W&B' if you want to use Weights & Biases, Choose 'Tensorboard' if you want to use Tensorboard")
+                              label="Logger",info="Choose which logger to use")
         
         # Row for start & clear buttons
         with gr.Row() as buttons:
             start_but = gr.Button(value="Start")
+            login_but = gr.Button(value="Login")
         
         start_but.click(fn=interface_train,inputs=[is_finetune, official_dataset],outputs=[])
+        login_but.click(fn=interface_login,inputs=[logger],outputs=[])
             
     return demo
 

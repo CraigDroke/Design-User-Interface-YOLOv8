@@ -3,6 +3,7 @@ from wandb.integration.ultralytics import add_wandb_callback
 import wandb
 
 if __name__ == "__main__":
+    wandb.login()
     # Step 1: Initialize a Weights & Biases run
     wandb.init(project="ultralytics", job_type="training")
 
@@ -15,13 +16,13 @@ if __name__ == "__main__":
     add_wandb_callback(model, enable_model_checkpointing=True)
 
     # Step 4: Train and Fine-Tune the Model
-    model.train(project="ultralytics", data=dataset_name, epochs=5, imgsz=640)
+    model.train(project="ultralytics", data=dataset_name, epochs=2, imgsz=640)
 
     # Step 5: Validate the Model
     model.val()
 
     # Step 6: Perform Inference and Log Results
-    model(["Images\Craig.jpg", "Images\WalterWhite.jpg"])
+    model(["examples\\training\Images\Craig.jpg", "examples\\training\Images\WalterWhite.jpg"])
 
     # Step 7: Finalize the W&B Run
     wandb.finish()
