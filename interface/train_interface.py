@@ -21,13 +21,14 @@ def build_train_interface():
             custom_dataset = gr.File(label="Custom Dataset",file_count='single',type='binary',
                                     file_types=['.zip'],visible=True,show_label=True,interactive=True)
             official_dataset = gr.Dropdown(label="Dataset",choices=["coco128"],visible=True,interactive=True)
-        with gr.Row() as output_row:
-            logger = gr.Radio(choices=['WANDB', 'ClearML', 'Tensorboard'],value='WANDB',show_label=True,interactive=True,visible=True,
-                              label="Logger",info="Choose which logger to use")
-        
+
         # Row for start & clear buttons
         with gr.Row() as buttons:
             start_but = gr.Button(value="Start")
+        with gr.Accordion("Logger Options") as login_accordion:
+            use_logger = gr.Checkbox(label="Use Logger",info="Check this box if you want to use a logger",visible=True,interactive=True,value=True)
+            logger = gr.Radio(choices=['WANDB', 'ClearML', 'Tensorboard'],value='WANDB',show_label=True,interactive=True,visible=True,
+                              label="Logger",info="Choose which logger to use")
             login_but = gr.Button(value="Login")
         
         start_but.click(fn=interface_train,inputs=[is_finetune, official_dataset],outputs=[])
