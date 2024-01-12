@@ -3,9 +3,17 @@ from ultralytics import YOLO
 from wandb.integration.ultralytics import add_wandb_callback
 import wandb
 
-def interface_login(logger):
+def interface_login(logger, args):
     if logger == 'WANDB':
-        result = wandb.login()
+        result = False
+        wandb_key = args[0]
+        if (wandb_key is not None) & isinstance(wandb_key, str):
+            try:
+                result = wandb.login(key=wandb_key,relogin=True)
+            except:
+                gr.Warning("Issue with the WANDB key")
+        else:
+            gr.Warning("Issue with the WANDB key")
         if result:
             gr.Info("Logged in to WANDB")
         else:
@@ -14,7 +22,6 @@ def interface_login(logger):
         pass
     elif logger == 'Tensorboard':
         pass
-    
 
 def interface_finetune():
     # Load a pretrained YOLOv8n model
