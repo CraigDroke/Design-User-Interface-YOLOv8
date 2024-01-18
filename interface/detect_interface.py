@@ -37,10 +37,21 @@ def build_detect_interface():
             start_but = gr.Button(value="Start")
             clear_but = gr.ClearButton(value='Clear All',components=clear_list,
                     interactive=True,visible=True)
+        
+        with gr.Accordion("Model Options") as modparam_accordion:
+            with gr.Row():
+                get_weights = gr.Radio(label="Weight Selection",info="Choose weights for model to use for classification",
+                                    choices=['yolov8n','yolov8s','yolov8m','yolov8l','yolov8x'],value='yolov8n',show_label=True,interactive=True,visible=True,container=True)
+                get_threshold = gr.Slider(label="Classification Threshold",info="Slide to the desired threshold",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
+            with gr.Row():
+                pretrained_file = gr.File(file_count='single',file_types=['.pt'],label='Pretrained Model Weights',type='filepath',show_label=True,container=True,interactive=True,visible=True)
+                use_custom = gr.Checkbox(label = "Use custom Weights",show_label=True,container=True,interactive=True,visible=True)
+
 
         update_list = [input_im,output_box_im,input_vid,output_box_vid]
-        input_media = input_im
+        input_media = input_im 
         output_media = output_box_im
+        detect_inputs = [input_media,get_weights,get_threshold,pretrained_file,use_custom]
 
         def change_input_type(file_type, input_media):
             if file_type == 'Image':
@@ -62,8 +73,9 @@ def build_detect_interface():
                     output_box_vid: gr.Video(visible=True)
                 }
         
+
         # When start button is clicked, the run_all method is called
-        start_but.click(interface_detect, inputs=[input_media], outputs=output_media)
+        start_but.click(interface_detect, inputs=detect_inputs, outputs=output_media)
         # When these settings are changed, the change_file_type method is called
         file_type.input(change_input_type, show_progress=True, inputs=[file_type, input_media], outputs=update_list)
         
