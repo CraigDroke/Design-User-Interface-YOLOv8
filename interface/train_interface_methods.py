@@ -3,13 +3,19 @@ from ultralytics import YOLO
 from wandb.integration.ultralytics import add_wandb_callback
 import wandb
 
+def file_check(test):
+    print(type(test))
+    print(test)
+    print(str(test))
+    
+
 def interface_login(logger, args):
     if logger == 'WANDB':
         result = False
         wandb_key = args[0]
         if (wandb_key is not None) & isinstance(wandb_key, str):
             try:
-                result = wandb.login(key=wandb_key,relogin=True)
+                result = wandb.login(key=wandb_key,relogin=True,timeout=15)
             except:
                 gr.Warning("Issue with the WANDB key")
         else:
@@ -28,10 +34,12 @@ def interface_finetune():
     model = YOLO('yolov8n.pt')  # Load an official Detect model
     return model
     
-def interface_train(is_fintune=False, dataset=None, epochs=2, imgsz=640):
+def interface_train(is_finetune=False, dataset=None, epochs=2, imgsz=640):
     model = YOLO('yolov8n.yaml')
-    if is_fintune:
+    if is_finetune:
         model = interface_finetune()
+    if not dataset.endswith(".yaml") & isinstance(dataset, str):
+        dataset = dataset + ".yaml"
     results = model.train(data=dataset, epochs=epochs, imgsz=imgsz)
     
 def interface_train_wandb(project_name, model_name, dataset_name, epochs=2, imgsz=640):

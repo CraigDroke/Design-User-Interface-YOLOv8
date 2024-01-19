@@ -5,6 +5,7 @@ from interface.train_interface import TrainInterface
 from interface.resources_interface import build_resources_interface
 import gradio as gr
 from interface.defaults import shared_theme
+import wandb
 
 def build_main_interface():
     detect = build_detect_interface()
@@ -27,4 +28,9 @@ def build_main_interface():
 if __name__== "__main__" :
     # run_main_interface()
     demo = build_main_interface()
-    demo.queue().launch()
+    demo.queue().launch(inbrowser=True,
+                        share=False,
+                        debug=False,
+                        show_error=False,
+                        quiet=False)
+    demo.integrate(wandb=wandb)
