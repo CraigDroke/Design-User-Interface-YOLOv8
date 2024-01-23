@@ -1,7 +1,7 @@
 # Ignore personal vscode setting files
 .vscode/*
 # Ignore weight files because they are too large
-weights/*
+*.pt
 # Ignore gradio generated flag files
 flagged/*
 # Ignore runs from training / detecting

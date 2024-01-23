@@ -29,7 +29,7 @@ Pip install the ultralytics package including all [requirements](https://github.
 ```bash
 pip install ultralytics
 ```
-
+### Test 
 For alternative installation methods including [Conda](https://anaconda.org/conda-forge/ultralytics), [Docker](https://hub.docker.com/r/ultralytics/ultralytics), and Git, please refer to the [Quickstart Guide](https://docs.ultralytics.com/quickstart).
 
 </details>
