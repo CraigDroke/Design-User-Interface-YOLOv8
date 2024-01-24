@@ -53,7 +53,7 @@ def build_detect_interface():
                 get_size = gr.Slider(label="Image SIze",info="Slide to the desired image size",value = 640,minimum=32,maximum=4096,step=32,show_label=True,interactive=True,visible=True,container=True)
             with gr.Accordion("Expert") as modparam_accordion:
                 pretrained_file = gr.File(file_count='single',file_types=['.pt'],label='Pretrained Model Weights',type='filepath',show_label=True,container=True,interactive=True,visible=True)
-                get_visualize = gr.Checkbox(label = "Visualize Model Figures", show_label= True, interactive = True, visible = True)
+                get_visualize = gr.Checkbox(label = "Visualize Model Features", show_label= True, interactive = True, visible = True)
                 get_agnostic = gr.Checkbox(label= "Class Agnostic NMS",info = "Will box all objects, including unknown items", show_label = True, interactive = True, visible = True)
 
         update_list = [input_im,output_box_im,input_vid,output_box_vid]

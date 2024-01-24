@@ -3,7 +3,9 @@ from ultralytics import YOLO
 import numpy as np
 import cv2
 
+run = 18
 def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agnostic,img_size,viz,get_class_name):
+    global run
     # Load a pretrained YOLOv8n model
     #print(pretrained)
     if pretrained is not None:
@@ -16,7 +18,14 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
         if get_class_name == []:
             get_class_name = None
         results = model.predict(source=source,conf=thres/100, iou = user_iou/100,max_det = user_det, agnostic_nms = get_agnostic,imgsz = img_size,visualize = viz,classes = get_class_name)
-        return results[0].plot()
+        if viz:
+            run = run +1
+            
+            return "C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect\\predict"+ str(run) +"\\image0\\stage0_Conv_features.png"
+             
+        else:
+            print(results)
+            return results[0].plot()
     elif source.endswith(".mp4"):
         cap = cv2.VideoCapture(source)
         # Get the properties of the input video
