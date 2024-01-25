@@ -2,8 +2,10 @@ import gradio as gr
 from ultralytics import YOLO
 import numpy as np
 import cv2
+import os, os.path
 
-run = 18
+lst = os.listdir('C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect')
+run = len(lst)
 def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agnostic,img_size,viz,get_class_name):
     global run
     # Load a pretrained YOLOv8n model
@@ -19,7 +21,7 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
             get_class_name = None
         results = model.predict(source=source,conf=thres/100, iou = user_iou/100,max_det = user_det, agnostic_nms = get_agnostic,imgsz = img_size,visualize = viz,classes = get_class_name)
         if viz:
-            run = run +1
+            run = run + 1
             
             return "C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect\\predict"+ str(run) +"\\image0\\stage0_Conv_features.png"
              
@@ -61,3 +63,5 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
         return output_path
     else:
         raise ValueError("Invalid source type")
+    
+run = run
