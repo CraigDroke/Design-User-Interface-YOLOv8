@@ -30,7 +30,7 @@ def build_detect_interface():
                                 show_share_button=True,interactive=True,visible=False)
             # Default Boxed output video: Not visible
             output_box_vid = gr.Video(label="Output Video",show_share_button=True,visible=False)
-        
+            show_predictions = gr.Textbox(label = 'Top Object Predictions:', interactive= False)
         # List of components for clearing
         clear_list = [input_im,output_box_im,input_vid,output_box_vid]
         
@@ -47,6 +47,8 @@ def build_detect_interface():
                 get_threshold = gr.Slider(label="Classification Threshold",info="Slide to the desired threshold",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
                 with gr.Column():
                     get_class_name = gr.Dropdown(value = None, choices = class_choices, type = 'index', multiselect=True, label = "Class Filter", show_label=True,interactive=True,)
+                    # trying to get checkbox to turn on and off the bounding box 
+                    get_boundingbox = gr.Checkbox(label= "Bounding Box Shown", show_label= True, interactive= True, visible= True)
             with gr.Accordion("Advanced") as modparam_accordion:
                 get_iou = gr.Slider(label="IOU Threshold",info="Slide to the desired threshold",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
                 get_max_det = gr.Slider(label="Maximum Detections",info="Slide to the desired number",value = 300,minimum=0,maximum=1000,step=10,show_label=True,interactive=True,visible=True,container=True)
@@ -58,8 +60,8 @@ def build_detect_interface():
 
         update_list = [input_im,output_box_im,input_vid,output_box_vid]
         input_media = input_im 
-        output_media = output_box_im
-        detect_inputs = [input_media,get_weights,get_threshold,pretrained_file,get_iou,get_max_det, get_agnostic,get_size,get_visualize,get_class_name]
+        output_media = [output_box_im,show_predictions]
+        detect_inputs = [input_media,get_weights,get_threshold,pretrained_file,get_iou,get_max_det, get_agnostic,get_size,get_visualize,get_class_name, get_boundingbox]
 
         def change_input_type(file_type, input_media):
             if file_type == 'Image':
