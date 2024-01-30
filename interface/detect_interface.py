@@ -32,7 +32,7 @@ def build_detect_interface():
             output_box_vid = gr.Video(label="Output Video",show_share_button=True,visible=False)
             show_predictions = gr.Textbox(label = 'Top Object Predictions:', interactive= False)
         # List of components for clearing
-        clear_list = [input_im,output_box_im,input_vid,output_box_vid]
+        clear_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions]
         
         # Row for start & clear buttons
         with gr.Row() as buttons:
@@ -40,11 +40,12 @@ def build_detect_interface():
             clear_but = gr.ClearButton(value='Clear All',components=clear_list,
                     interactive=True,visible=True)
         
+        # Settings 
         with gr.Accordion("Model Options") as modparam_accordion:
             with gr.Accordion("Beginner") as modparam_accordion:
                 get_weights = gr.Radio(label="Weight Selection",info="Choose weights for model to use for classification",
                                     choices=['yolov8n','yolov8s','yolov8m','yolov8l','yolov8x'],value='yolov8n',show_label=True,interactive=True,visible=True,container=True)
-                get_threshold = gr.Slider(label="Classification Threshold",info="Slide to the desired threshold",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
+                get_threshold = gr.Slider(label="Classification Threshold",info="Slide to the desired threshold. This value is the minimum confidence percentage",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
                 with gr.Column():
                     get_class_name = gr.Dropdown(value = None, choices = class_choices, type = 'index', multiselect=True, label = "Class Filter", show_label=True,interactive=True,)
                     # trying to get checkbox to turn on and off the bounding box 

@@ -62,14 +62,15 @@ class_names = {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplan
  77: 'teddy bear',
  78: 'hair drier',
  79: 'toothbrush'}
-class_ids = []
-precentages = []
-classes = []
-output_string = ""
+
 lst = os.listdir('C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect')
 run = len(lst)
 def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agnostic,img_size,viz,get_class_name, get_boundingbox):
     global run, output_string
+    class_ids = []
+    precentages = []
+    classes = []
+    output_string = ""
     # Load a pretrained YOLOv8n model
     #print(pretrained)
     if pretrained is not None:
@@ -81,24 +82,23 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
     if isinstance(source, np.ndarray):
         if get_class_name == []:
             get_class_name = None
-        results = model.predict(source=source,conf=thres/100, iou = user_iou/100,max_det = user_det, agnostic_nms = get_agnostic,imgsz = img_size,visualize = viz,classes = get_class_name)
+        results = model.predict(source=source,conf=thres/100, iou = user_iou/100,max_det = user_det, agnostic_nms = get_agnostic,imgsz = img_size,visualize = viz,classes = get_class_name,boxes=False)
         if viz:
             run = run + 1
             
             return ["C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect\\predict"+ str(run) +"\\image0\\stage0_Conv_features.png",""]
-             
         else:
-            print(results)
             for result in results:
                 for box in result.boxes:
                     class_ids.append(int(box.cls))
-                    precentages.append(str(round(box.conf.item(),2)))
-            
+                    precentages.append(str(round(box.conf.item(), 2)))
+
             for i in range(len(class_ids)):
                 classes.append(class_names.get(class_ids[i]))
-                output_string = output_string + "Class name: " + classes[i] + " Confidence: " + precentages[i]+ '\n'
+                output_string += "Class name: " + classes[i] + " Confidence: " + precentages[i] + '\n'
 
             return [results[0].plot(), output_string]
+            
         
 
     elif source.endswith(".mp4"):
