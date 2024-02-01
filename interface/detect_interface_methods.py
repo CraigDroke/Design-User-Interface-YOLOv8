@@ -92,6 +92,8 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
                 for box in result.boxes:
                     class_ids.append(int(box.cls))
                     precentages.append(str(round(box.conf.item(), 2)))
+                if get_boundingbox:
+                    result.boxes = []
 
             for i in range(len(class_ids)):
                 classes.append(class_names.get(class_ids[i]))
