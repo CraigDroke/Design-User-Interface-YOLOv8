@@ -45,7 +45,7 @@ def build_detect_interface():
         with gr.Accordion("Model Options") as modparam_accordion:
             
             # weights options, classification threshold, bounding box checkbox, clases
-            with gr.Accordion("Beginner") as modparam_accordion:
+            with gr.Accordion("Beginner", open=False) as modparam_accordion:
                 get_weights = gr.Radio(label="Weight Selection",info="Choose model version to use for classification",
                                     choices=['yolov8n','yolov8s','yolov8m','yolov8l','yolov8x'],value='yolov8n',show_label=True,interactive=True,visible=True,container=True)
                 get_threshold = gr.Slider(label="Classification Threshold",info="Slide to the desired threshold. This value will set the minimum confidence percentage for a object to be predicted",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
@@ -54,13 +54,13 @@ def build_detect_interface():
                     get_boundingbox = gr.Checkbox(label= "Bounding Box Hidden", info = "Check this box if you do not want the bounding boxes to show. The top predictions will still be displayed", show_label= True, interactive= True, visible= True)
             
             # IOU slider, max detections, image size
-            with gr.Accordion("Advanced") as modparam_accordion:
+            with gr.Accordion("Advanced", open=False) as modparam_accordion:
                 get_iou = gr.Slider(label="IOU Threshold",info="Slide to the desired threshold. This measures the overlap between bounding boxes, the lower the value the more detections",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
                 get_max_det = gr.Slider(label="Maximum Detections",info="Slide to the desired number. This value sets the maximum number of bounding boxes allowed",value = 300,minimum=0,maximum=1000,step=10,show_label=True,interactive=True,visible=True,container=True)
                 get_size = gr.Slider(label="Image SIze",info="Slide to the desired image size. Must be between 32 and 4096",value = 640,minimum=32,maximum=4096,step=32,show_label=True,interactive=True,visible=True,container=True)
             
             # visualize checkbox, agnostic checkbox, pretrained file
-            with gr.Accordion("Expert") as modparam_accordion:
+            with gr.Accordion("Expert", open=False) as modparam_accordion:
                 pretrained_file = gr.File(file_count='single',file_types=['.pt'],label='Pretrained Model Weights',type='filepath',show_label=True,container=True,interactive=True,visible=True)
                 get_visualize = gr.Checkbox(label = "Visualize Model Features", info = "Shows the features of the image the model uses for classification", show_label= True, interactive = True, visible = True)
                 get_agnostic = gr.Checkbox(label= "Class Agnostic NMS",info = "Will set a bouning box around all objects, including unknown items", show_label = True, interactive = True, visible = True)
