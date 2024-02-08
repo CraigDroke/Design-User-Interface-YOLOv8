@@ -7,16 +7,40 @@ def build_bio_interface():
             '''
             # Student Biographies
 
-            ## Here is a list of all the students who worked on this interface
+            # Here is a list of all the students who worked on this interface
 
 
-            ### * Student 1
+            ## Craig Droke
 
-            ### Bio
+            ### Junior Electrical and Computer Engineering major at Rowan University. Work includes image detection and UI/UX development.
 
-            ### * Student 2
+            ## Jimmy Galeno
 
-            ### Bio 
+            ### I am a Junior Electrical and Computer Engineering student at Rowan University interested in Power Systems Engineering. Portion of my work includes model and interface settings.
+
+            ## Christian Cipolletta
+
+            ### I am a Junior Electrical & Computer Engineering Student at Rowan University interested in Machine Learning. My work includes the model training UI development.
+
+            ## Ozan Tekben
+
+            ### Senior Electrical and Computer Engineering Major at Rowan University. Work includes project management and interface testing.
+
+            ## Matt O'Donnell
+
+            ### I am a Junior Electrical and Computer Engineering student at Rowan University interested in Embedded Systems development. My work includes model detection settings and interface design.
+
+            ## Chinedu Ike-Anyanwu
+
+            ### Senior Electrical and Computer Engineering Major at Rowan University. Work includes model training and interface development.
+
+            ## Asien Truong
+
+            ### Junior Mechanical Engineering Major at Rowan University. Work includes model training and integrating for adversarial attacks.
+
+
+
+
 
             '''
         )
