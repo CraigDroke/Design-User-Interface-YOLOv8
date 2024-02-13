@@ -2,6 +2,23 @@ import gradio as gr
 from ultralytics import YOLO
 from wandb.integration.ultralytics import add_wandb_callback
 import wandb
+from torch.utils.tensorboard import SummaryWriter
+import os
+import subprocess
+import webbrowser
+import time
+from ultralytics import YOLO
+
+
+
+def count_train_folders(directory):
+    count = 0
+    for folder in os.listdir(directory):
+        if "train" in folder:
+            count += 1
+    return count
+
+count = count_train_folders('C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect')
 
 def interface_login(logger):
     if logger == 'WANDB':
@@ -13,7 +30,8 @@ def interface_login(logger):
     elif logger == 'ClearML':
         pass
     elif logger == 'Tensorboard':
-        pass
+        gr.Info("Logged in to Tensorboard")
+        
     
 
 def interface_finetune():
@@ -25,7 +43,7 @@ def interface_train(is_fintune=False, dataset=None, epochs=2, imgsz=640):
     model = YOLO('yolov8n.yaml')
     if is_fintune:
         model = interface_finetune()
-    results = model.train(data=dataset, epochs=epochs, imgsz=imgsz)
+    results = model.train(data=dataset + ".yaml", epochs=epochs, imgsz=imgsz)
     
 def interface_train_wandb(project_name, model_name, dataset_name, epochs=2, imgsz=640):
     # Step 1: Initialize a Weights & Biases run
@@ -47,3 +65,12 @@ def interface_train_wandb(project_name, model_name, dataset_name, epochs=2, imgs
 
     # Step 7: Finalize the W&B Run
     wandb.finish()
+
+def interface_train_tensorboard(model_name, dataset_name, epochs=1, imgsz=640):
+    model = YOLO(f"{model_name}")
+    
+    model.train(data=dataset_name + ".yaml", epochs=epochs, imgsz=imgsz)
+    command = f"python -m tensorboard.main --logdir=C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect\\train{count}"
+    subprocess.run(command, shell=True)
+    #time.sleep(1000)
+    webbrowser.open('http://localhost:6006/')

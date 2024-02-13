@@ -1,6 +1,6 @@
 import gradio as gr
 from interface.defaults import shared_theme
-from interface.train_interface_methods import interface_train, interface_login
+from interface.train_interface_methods import interface_train, interface_login, interface_train_tensorboard
 
 def build_train_interface():
     with gr.Blocks(theme=shared_theme) as demo:
@@ -32,7 +32,8 @@ def build_train_interface():
             login_but = gr.Button(value="Login")
         
         start_but.click(fn=interface_train,inputs=[is_finetune, official_dataset],outputs=[])
-        login_but.click(fn=interface_login,inputs=[logger],outputs=[])
+        #login_but.click(fn=interface_login,inputs=[logger],outputs=[])
+        login_but.click(fn=interface_train_tensorboard,inputs=[offical_pretrained,official_dataset],outputs=[])
             
     return demo
 
