@@ -1,0 +1,124 @@
+2024-01-18 14:49:18,213 INFO    StreamThr :13400 [internal.py:wandb_internal():86] W&B internal server running at pid: 13400, started at: 2024-01-18 14:49:18.211501
+2024-01-18 14:49:18,219 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status
+2024-01-18 14:49:18,228 INFO    WriterThread:13400 [datastore.py:open_for_write():87] open: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\run-hfx3bb0i.wandb
+2024-01-18 14:49:18,231 DEBUG   SenderThread:13400 [sender.py:send():382] send: header
+2024-01-18 14:49:18,235 DEBUG   SenderThread:13400 [sender.py:send():382] send: run
+2024-01-18 14:49:18,274 INFO    SenderThread:13400 [sender.py:_maybe_setup_resume():763] checking resume status for None/train-pgt-yolov7/hfx3bb0i
+2024-01-18 14:49:18,827 INFO    SenderThread:13400 [dir_watcher.py:__init__():211] watching files in: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files
+2024-01-18 14:49:18,828 INFO    SenderThread:13400 [sender.py:_start_run_threads():1136] run started: hfx3bb0i with start time 1705607358.214969
+2024-01-18 14:49:18,851 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: check_version
+2024-01-18 14:49:18,852 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: check_version
+2024-01-18 14:49:19,251 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: run_start
+2024-01-18 14:49:19,281 DEBUG   HandlerThread:13400 [system_info.py:__init__():27] System info init
+2024-01-18 14:49:19,281 DEBUG   HandlerThread:13400 [system_info.py:__init__():42] System info init done
+2024-01-18 14:49:19,282 INFO    HandlerThread:13400 [system_monitor.py:start():194] Starting system monitor
+2024-01-18 14:49:19,283 INFO    HandlerThread:13400 [system_monitor.py:probe():214] Collecting system info
+2024-01-18 14:49:19,283 INFO    SystemMonitor:13400 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-01-18 14:49:19,285 INFO    SystemMonitor:13400 [interfaces.py:start():190] Started cpu monitoring
+2024-01-18 14:49:19,295 INFO    SystemMonitor:13400 [interfaces.py:start():190] Started disk monitoring
+2024-01-18 14:49:19,306 DEBUG   HandlerThread:13400 [system_info.py:probe():151] Probing system
+2024-01-18 14:49:19,306 INFO    SystemMonitor:13400 [interfaces.py:start():190] Started gpu monitoring
+2024-01-18 14:49:19,308 INFO    SystemMonitor:13400 [interfaces.py:start():190] Started memory monitoring
+2024-01-18 14:49:19,331 INFO    SystemMonitor:13400 [interfaces.py:start():190] Started network monitoring
+2024-01-18 14:49:19,343 DEBUG   HandlerThread:13400 [system_info.py:_probe_git():136] Probing git
+2024-01-18 14:49:19,387 DEBUG   HandlerThread:13400 [system_info.py:_probe_git():144] Probing git done
+2024-01-18 14:49:19,387 DEBUG   HandlerThread:13400 [system_info.py:probe():199] Probing system done
+2024-01-18 14:49:19,387 DEBUG   HandlerThread:13400 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.22631-SP0', 'python': '3.11.7', 'heartbeatAt': '2024-01-18T19:49:19.306556', 'startedAt': '2024-01-18T19:49:18.196800', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'C:\\Users\\chine\\Desktop\\PythonScripts\\yoloV7train\\train.py', 'codePathLocal': 'train.py', 'codePath': 'Desktop\\PythonScripts\\yoloV7train\\train.py', 'git': {'remote': None, 'commit': None}, 'email': '75408516+IkeAny@users.noreply.github.com', 'root': 'C:/Users/chine', 'host': 'DaveIS', 'username': 'chine', 'executable': 'C:\\Users\\chine\\anaconda3\\envs\\clinicenv\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 3201.0, 'min': 0.0, 'max': 3201.0}, 'cpu_freq_per_core': [{'current': 3201.0, 'min': 0.0, 'max': 3201.0}], 'disk': {'/': {'total': 1835.6621055603027, 'used': 855.0597229003906}}, 'gpu': 'NVIDIA GeForce RTX 4050 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4050 Laptop GPU', 'memory_total': 6439305216}], 'memory': {'total': 47.24519348144531}}
+2024-01-18 14:49:19,387 INFO    HandlerThread:13400 [system_monitor.py:probe():224] Finished collecting system info
+2024-01-18 14:49:19,388 INFO    HandlerThread:13400 [system_monitor.py:probe():227] Publishing system info
+2024-01-18 14:49:19,388 DEBUG   HandlerThread:13400 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-01-18 14:49:19,844 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\conda-environment.yaml
+2024-01-18 14:49:23,791 DEBUG   HandlerThread:13400 [system_info.py:_save_conda():220] Saving conda packages done
+2024-01-18 14:49:23,793 INFO    HandlerThread:13400 [system_monitor.py:probe():229] Finished publishing system info
+2024-01-18 14:49:23,811 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:49:23,812 DEBUG   SenderThread:13400 [sender.py:send():382] send: files
+2024-01-18 14:49:23,812 INFO    SenderThread:13400 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-01-18 14:49:23,823 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: python_packages
+2024-01-18 14:49:23,824 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: python_packages
+2024-01-18 14:49:23,826 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:49:23,833 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:49:23,839 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:49:23,881 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\conda-environment.yaml
+2024-01-18 14:49:23,882 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\requirements.txt
+2024-01-18 14:49:23,882 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\wandb-metadata.json
+2024-01-18 14:49:24,270 DEBUG   SenderThread:13400 [sender.py:send():382] send: telemetry
+2024-01-18 14:49:24,271 DEBUG   SenderThread:13400 [sender.py:send():382] send: telemetry
+2024-01-18 14:49:24,271 DEBUG   SenderThread:13400 [sender.py:send():382] send: config
+2024-01-18 14:49:24,272 DEBUG   SenderThread:13400 [sender.py:send():382] send: config
+2024-01-18 14:49:24,477 INFO    wandb-upload_0:13400 [upload_job.py:push():131] Uploaded file C:\Users\chine\AppData\Local\Temp\tmpkq494c72wandb\7tjmvf36-wandb-metadata.json
+2024-01-18 14:49:24,961 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\output.log
+2024-01-18 14:49:26,970 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\output.log
+2024-01-18 14:49:27,981 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\output.log
+2024-01-18 14:49:28,352 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:49:33,386 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:49:38,436 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:49:38,840 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:49:38,841 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:49:38,849 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:49:44,049 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:49:49,117 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:49:50,189 INFO    Thread-21 :13400 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\Desktop\PythonScripts\yoloV7train\wandb\run-20240118_144918-hfx3bb0i\files\config.yaml
+2024-01-18 14:49:53,843 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:49:53,859 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:49:53,860 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:49:55,009 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:00,061 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:05,111 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:08,847 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:50:08,864 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:50:08,865 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:50:11,041 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:16,080 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:19,345 DEBUG   SystemMonitor:13400 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-01-18 14:50:19,347 DEBUG   SenderThread:13400 [sender.py:send():382] send: stats
+2024-01-18 14:50:21,370 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:23,862 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:50:23,864 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:50:23,864 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:50:27,039 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:32,085 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:37,139 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:38,871 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:50:38,872 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:50:38,872 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:50:43,087 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:48,149 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:49,352 DEBUG   SenderThread:13400 [sender.py:send():382] send: stats
+2024-01-18 14:50:53,396 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:50:53,879 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:50:53,880 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:50:53,881 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:50:59,105 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:04,174 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:08,889 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:51:08,889 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:51:08,890 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:51:10,055 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:15,109 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:19,357 DEBUG   SenderThread:13400 [sender.py:send():382] send: stats
+2024-01-18 14:51:20,371 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:23,908 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:51:23,909 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:51:23,909 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:51:26,081 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:31,140 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:36,168 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:38,929 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:51:38,929 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:51:38,931 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:51:42,111 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:47,163 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:49,365 DEBUG   SenderThread:13400 [sender.py:send():382] send: stats
+2024-01-18 14:51:52,399 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:51:53,911 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:51:53,912 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:51:53,912 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:51:58,072 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:52:03,124 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:52:08,182 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:52:08,900 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-18 14:52:08,916 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-18 14:52:08,917 DEBUG   SenderThread:13400 [sender.py:send_request():409] send_request: stop_status
+2024-01-18 14:52:14,075 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:52:19,125 DEBUG   HandlerThread:13400 [handler.py:handle_request():146] handle_request: status_report
+2024-01-18 14:52:19,379 DEBUG   SenderThread:13400 [sender.py:send():382] send: stats

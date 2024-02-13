@@ -1,0 +1,53 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.11.7",
+    "heartbeatAt": "2024-01-18T19:52:40.040427",
+    "startedAt": "2024-01-18T19:52:38.926775",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Users\\chine\\Desktop\\PythonScripts\\yoloV7train\\train.py",
+    "codePathLocal": "train.py",
+    "codePath": "Desktop\\PythonScripts\\yoloV7train\\train.py",
+    "git": {
+        "remote": null,
+        "commit": null
+    },
+    "email": "75408516+IkeAny@users.noreply.github.com",
+    "root": "C:/Users/chine",
+    "host": "DaveIS",
+    "username": "chine",
+    "executable": "C:\\Users\\chine\\anaconda3\\envs\\clinicenv\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3201.0,
+        "min": 0.0,
+        "max": 3201.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3201.0,
+            "min": 0.0,
+            "max": 3201.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1835.6621055603027,
+            "used": 856.4754180908203
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+            "memory_total": 6439305216
+        }
+    ],
+    "memory": {
+        "total": 47.24519348144531
+    }
+}

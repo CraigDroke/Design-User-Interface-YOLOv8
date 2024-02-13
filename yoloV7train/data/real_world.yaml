@@ -1,0 +1,16 @@
+# path: ../data/real_world  # /Real_world_training # dataset root dir
+# train: .../drone_data/Real_world_test/images  # train images (relative to 'path') 128 images
+# val: .../drone_data/Real_world_test/images  # val images (relative to 'path') 128 images
+# test: .../drone_data/Real_world_test/images
+
+path: ../data/real_world  # dataset root dir
+train:  images/Real_world_training  # train images (relative to 'path') 128 images
+val:  images/Real_world_training  # val images (relative to 'path') 128 images
+test:  images/Real_world_training  # test images (optional)
+label: images/Real_world_training
+
+
+
+# Classes
+nc: 2  # Num Clases
+names: ['AIRPLANE', 'DRONE'] # Class Namesz

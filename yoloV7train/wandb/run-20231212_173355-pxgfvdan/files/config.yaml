@@ -1,0 +1,383 @@
+wandb_version: 1
+
+weights:
+  desc: null
+  value: yolov7.pt
+cfg:
+  desc: null
+  value: ''
+data:
+  desc: null
+  value: data/coco128.yaml
+hyp:
+  desc: null
+  value:
+    lr0: 0.01
+    lrf: 0.1
+    momentum: 0.937
+    weight_decay: 0.0005
+    warmup_epochs: 3.0
+    warmup_momentum: 0.8
+    warmup_bias_lr: 0.1
+    box: 0.05
+    cls: 0.3
+    cls_pw: 1.0
+    obj: 0.7
+    obj_pw: 1.0
+    iou_t: 0.2
+    anchor_t: 4.0
+    fl_gamma: 0.0
+    hsv_h: 0.015
+    hsv_s: 0.7
+    hsv_v: 0.4
+    degrees: 0.0
+    translate: 0.2
+    scale: 0.9
+    shear: 0.0
+    perspective: 0.0
+    flipud: 0.0
+    fliplr: 0.5
+    mosaic: 1.0
+    mixup: 0.15
+    copy_paste: 0.0
+    paste_in: 0.15
+    loss_ota: 1
+epochs:
+  desc: null
+  value: 20
+batch_size:
+  desc: null
+  value: 64
+img_size:
+  desc: null
+  value:
+  - 640
+  - 640
+rect:
+  desc: null
+  value: false
+resume:
+  desc: null
+  value: false
+nosave:
+  desc: null
+  value: false
+notest:
+  desc: null
+  value: false
+noautoanchor:
+  desc: null
+  value: false
+evolve:
+  desc: null
+  value: false
+bucket:
+  desc: null
+  value: ''
+cache_images:
+  desc: null
+  value: false
+image_weights:
+  desc: null
+  value: false
+device:
+  desc: null
+  value: '0'
+multi_scale:
+  desc: null
+  value: false
+single_cls:
+  desc: null
+  value: false
+adam:
+  desc: null
+  value: false
+sync_bn:
+  desc: null
+  value: false
+local_rank:
+  desc: null
+  value: -1
+workers:
+  desc: null
+  value: 0
+project:
+  desc: null
+  value: runs/train
+entity:
+  desc: null
+  value: null
+name:
+  desc: null
+  value: exp
+exist_ok:
+  desc: null
+  value: false
+quad:
+  desc: null
+  value: false
+linear_lr:
+  desc: null
+  value: false
+label_smoothing:
+  desc: null
+  value: 0.0
+upload_dataset:
+  desc: null
+  value: false
+bbox_interval:
+  desc: null
+  value: -1
+save_period:
+  desc: null
+  value: -1
+artifact_alias:
+  desc: null
+  value: latest
+freeze:
+  desc: null
+  value:
+  - 0
+v5_metric:
+  desc: null
+  value: false
+out_num_attrs:
+  desc: null
+  value:
+  - 1
+pgt_lr:
+  desc: null
+  value: 0.7
+pgt_lr_decay:
+  desc: null
+  value: 0.75
+pgt_lr_decay_step:
+  desc: null
+  value: 20
+no_trace:
+  desc: null
+  value: true
+conf_thres:
+  desc: null
+  value: 0.5
+save_dir:
+  desc: null
+  value: runs\train\exp21
+seed:
+  desc: null
+  value: 65066799718732936
+world_size:
+  desc: null
+  value: 1
+global_rank:
+  desc: null
+  value: -1
+total_batch_size:
+  desc: null
+  value: 64
+_wandb:
+  desc: null
+  value:
+    python_version: 3.11.5
+    cli_version: 0.16.1
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1702420435.25469
+    t:
+      1:
+      - 1
+      - 41
+      - 55
+      - 105
+      2:
+      - 1
+      - 41
+      - 55
+      - 105
+      3:
+      - 13
+      - 16
+      - 19
+      - 23
+      4: 3.11.5
+      5: 0.16.1
+      8:
+      - 3
+      - 5
+      13: windows-amd64
+opt:
+  desc: null
+  value:
+    weights: yolov7.pt
+    cfg: ''
+    data: data/coco128.yaml
+    hyp:
+      lr0: 0.01
+      lrf: 0.1
+      momentum: 0.937
+      weight_decay: 0.0005
+      warmup_epochs: 3.0
+      warmup_momentum: 0.8
+      warmup_bias_lr: 0.1
+      box: 0.05
+      cls: 0.3
+      cls_pw: 1.0
+      obj: 0.7
+      obj_pw: 1.0
+      iou_t: 0.2
+      anchor_t: 4.0
+      fl_gamma: 0.0
+      hsv_h: 0.015
+      hsv_s: 0.7
+      hsv_v: 0.4
+      degrees: 0.0
+      translate: 0.2
+      scale: 0.9
+      shear: 0.0
+      perspective: 0.0
+      flipud: 0.0
+      fliplr: 0.5
+      mosaic: 1.0
+      mixup: 0.15
+      copy_paste: 0.0
+      paste_in: 0.15
+      loss_ota: 1
+    epochs: 20
+    batch_size: 64
+    img_size:
+    - 640
+    - 640
+    rect: false
+    resume: false
+    nosave: false
+    notest: false
+    noautoanchor: false
+    evolve: false
+    bucket: ''
+    cache_images: false
+    image_weights: false
+    device: '0'
+    multi_scale: false
+    single_cls: false
+    adam: false
+    sync_bn: false
+    local_rank: -1
+    workers: 0
+    project: runs/train
+    entity: null
+    name: exp
+    exist_ok: false
+    quad: false
+    linear_lr: false
+    label_smoothing: 0.0
+    upload_dataset: false
+    bbox_interval: -1
+    save_period: -1
+    artifact_alias: latest
+    freeze:
+    - 0
+    v5_metric: false
+    out_num_attrs:
+    - 1
+    pgt_lr: 0.7
+    pgt_lr_decay: 0.75
+    pgt_lr_decay_step: 20
+    no_trace: true
+    conf_thres: 0.5
+    save_dir: runs\train\exp21
+    seed: 65066799718732936
+    world_size: 1
+    global_rank: -1
+    total_batch_size: 64
+data_dict:
+  desc: null
+  value:
+    path: ../data/coco128
+    train: images/train2017
+    val: images/train2017
+    test: null
+    label: labels/train2017
+    nc: 80
+    names:
+    - person
+    - bicycle
+    - car
+    - motorcycle
+    - airplane
+    - bus
+    - train
+    - truck
+    - boat
+    - traffic light
+    - fire hydrant
+    - stop sign
+    - parking meter
+    - bench
+    - bird
+    - cat
+    - dog
+    - horse
+    - sheep
+    - cow
+    - elephant
+    - bear
+    - zebra
+    - giraffe
+    - backpack
+    - umbrella
+    - handbag
+    - tie
+    - suitcase
+    - frisbee
+    - skis
+    - snowboard
+    - sports ball
+    - kite
+    - baseball bat
+    - baseball glove
+    - skateboard
+    - surfboard
+    - tennis racket
+    - bottle
+    - wine glass
+    - cup
+    - fork
+    - knife
+    - spoon
+    - bowl
+    - banana
+    - apple
+    - sandwich
+    - orange
+    - broccoli
+    - carrot
+    - hot dog
+    - pizza
+    - donut
+    - cake
+    - chair
+    - couch
+    - potted plant
+    - bed
+    - dining table
+    - toilet
+    - tv
+    - laptop
+    - mouse
+    - remote
+    - keyboard
+    - cell phone
+    - microwave
+    - oven
+    - toaster
+    - sink
+    - refrigerator
+    - book
+    - clock
+    - vase
+    - scissors
+    - teddy bear
+    - hair drier
+    - toothbrush
+    download: https://ultralytics.com/assets/coco128.zip

@@ -1,0 +1,130 @@
+2023-12-12 13:44:01,376 INFO    StreamThr :8348 [internal.py:wandb_internal():86] W&B internal server running at pid: 8348, started at: 2023-12-12 13:44:01.376417
+2023-12-12 13:44:01,384 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status
+2023-12-12 13:44:01,387 INFO    WriterThread:8348 [datastore.py:open_for_write():85] open: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\run-2z76wx1n.wandb
+2023-12-12 13:44:01,390 DEBUG   SenderThread:8348 [sender.py:send():382] send: header
+2023-12-12 13:44:01,393 DEBUG   SenderThread:8348 [sender.py:send():382] send: run
+2023-12-12 13:44:01,411 INFO    SenderThread:8348 [sender.py:_maybe_setup_resume():763] checking resume status for None/YOLOR/2z76wx1n
+2023-12-12 13:44:02,270 INFO    SenderThread:8348 [dir_watcher.py:__init__():211] watching files in: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files
+2023-12-12 13:44:02,270 INFO    SenderThread:8348 [sender.py:_start_run_threads():1136] run started: 2z76wx1n with start time 1702406641.376416
+2023-12-12 13:44:02,288 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: check_version
+2023-12-12 13:44:02,288 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: check_version
+2023-12-12 13:44:02,749 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: run_start
+2023-12-12 13:44:02,780 DEBUG   HandlerThread:8348 [system_info.py:__init__():32] System info init
+2023-12-12 13:44:02,780 DEBUG   HandlerThread:8348 [system_info.py:__init__():47] System info init done
+2023-12-12 13:44:02,780 INFO    HandlerThread:8348 [system_monitor.py:start():194] Starting system monitor
+2023-12-12 13:44:02,782 INFO    HandlerThread:8348 [system_monitor.py:probe():214] Collecting system info
+2023-12-12 13:44:02,783 INFO    SystemMonitor:8348 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-12-12 13:44:02,784 INFO    SystemMonitor:8348 [interfaces.py:start():190] Started cpu monitoring
+2023-12-12 13:44:02,786 INFO    SystemMonitor:8348 [interfaces.py:start():190] Started disk monitoring
+2023-12-12 13:44:02,786 INFO    SystemMonitor:8348 [interfaces.py:start():190] Started gpu monitoring
+2023-12-12 13:44:02,796 DEBUG   HandlerThread:8348 [system_info.py:probe():196] Probing system
+2023-12-12 13:44:02,796 DEBUG   HandlerThread:8348 [system_info.py:probe():244] Probing system done
+2023-12-12 13:44:02,796 INFO    SystemMonitor:8348 [interfaces.py:start():190] Started memory monitoring
+2023-12-12 13:44:02,796 DEBUG   HandlerThread:8348 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.22631-SP0', 'python': '3.11.5', 'heartbeatAt': '2023-12-12T18:44:02.796768', 'startedAt': '2023-12-12T18:44:01.347331', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'C:\\Users\\chine\\OneDrive\\Desktop\\PythonScripts\\captum_tutorial\\yolov7-main\\train.py', 'codePathLocal': 'train.py', 'codePath': 'train.py', 'host': 'DaDungeon', 'username': 'chine', 'executable': 'C:\\Users\\chine\\anaconda3\\envs\\clinicenv\\python.exe', 'cpu_count': 16, 'cpu_count_logical': 24, 'cpu_freq': {'current': 2100.0, 'min': 0.0, 'max': 2100.0}, 'cpu_freq_per_core': [{'current': 2100.0, 'min': 0.0, 'max': 2100.0}], 'disk': {'/': {'total': 952.5908164978027, 'used': 338.6723976135254}}, 'gpu': 'NVIDIA GeForce RTX 4060 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4060 Laptop GPU', 'memory_total': 8585740288}], 'memory': {'total': 15.726432800292969}}
+2023-12-12 13:44:02,816 INFO    HandlerThread:8348 [system_monitor.py:probe():224] Finished collecting system info
+2023-12-12 13:44:02,816 INFO    HandlerThread:8348 [system_monitor.py:probe():227] Publishing system info
+2023-12-12 13:44:02,816 DEBUG   HandlerThread:8348 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-12-12 13:44:02,816 DEBUG   HandlerThread:8348 [system_info.py:_save_pip():68] Saving pip packages done
+2023-12-12 13:44:02,816 DEBUG   HandlerThread:8348 [system_info.py:_save_conda():75] Saving list of conda packages installed into the current environment
+2023-12-12 13:44:02,816 INFO    SystemMonitor:8348 [interfaces.py:start():190] Started network monitoring
+2023-12-12 13:44:02,835 ERROR   HandlerThread:8348 [system_info.py:_save_conda():86] Error saving conda packages: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "C:\Users\chine\anaconda3\envs\clinicenv\Lib\site-packages\wandb\sdk\internal\system\system_info.py", line 82, in _save_conda
+    subprocess.call(
+  File "C:\Users\chine\anaconda3\envs\clinicenv\Lib\subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\chine\anaconda3\envs\clinicenv\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\chine\anaconda3\envs\clinicenv\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\chine\.vscode\extensions\ms-python.python-2023.22.0\pythonFiles\lib\python\debugpy\_vendored\pydevd\_pydev_bundle\pydev_monkey.py", line 901, in new_CreateProcess
+    return getattr(_subprocess, original_name)(app_name, cmd_line, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2023-12-12 13:44:02,845 DEBUG   HandlerThread:8348 [system_info.py:_save_conda():87] Saving conda packages done
+2023-12-12 13:44:02,845 INFO    HandlerThread:8348 [system_monitor.py:probe():229] Finished publishing system info
+2023-12-12 13:44:02,890 DEBUG   SenderThread:8348 [sender.py:send():382] send: files
+2023-12-12 13:44:02,890 INFO    SenderThread:8348 [sender.py:_save_file():1392] saving file wandb-metadata.json with policy now
+2023-12-12 13:44:02,901 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:44:02,902 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:44:02,909 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:44:03,103 DEBUG   SenderThread:8348 [sender.py:send():382] send: telemetry
+2023-12-12 13:44:03,107 DEBUG   SenderThread:8348 [sender.py:send():382] send: telemetry
+2023-12-12 13:44:03,107 DEBUG   SenderThread:8348 [sender.py:send():382] send: config
+2023-12-12 13:44:03,107 DEBUG   SenderThread:8348 [sender.py:send():382] send: config
+2023-12-12 13:44:03,279 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\conda-environment.yaml
+2023-12-12 13:44:03,283 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\requirements.txt
+2023-12-12 13:44:03,283 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\output.log
+2023-12-12 13:44:03,284 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\wandb-metadata.json
+2023-12-12 13:44:03,775 INFO    wandb-upload_0:8348 [upload_job.py:push():131] Uploaded file C:\Users\chine\AppData\Local\Temp\tmpvwil2ryiwandb\52ku6aq7-wandb-metadata.json
+2023-12-12 13:44:05,282 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\output.log
+2023-12-12 13:44:07,395 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:12,432 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:17,463 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:17,902 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:44:17,902 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:44:17,917 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:44:23,141 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:28,179 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:32,908 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:44:32,909 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:44:32,922 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:44:33,456 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\output.log
+2023-12-12 13:44:34,023 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:34,467 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\config.yaml
+2023-12-12 13:44:39,343 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:44,375 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:47,927 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:44:47,927 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:44:47,927 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:44:50,034 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:44:55,085 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:00,129 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:02,836 DEBUG   SystemMonitor:8348 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2023-12-12 13:45:02,836 DEBUG   SenderThread:8348 [sender.py:send():382] send: stats
+2023-12-12 13:45:02,937 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:45:02,937 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:45:02,937 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:45:03,673 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\output.log
+2023-12-12 13:45:05,458 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:05,683 INFO    Thread-17 :8348 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\chine\OneDrive\Desktop\PythonScripts\captum_tutorial\yolov7-main\wandb\run-20231212_134401-2z76wx1n\files\output.log
+2023-12-12 13:45:10,500 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:15,526 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:17,975 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:45:17,978 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:45:17,978 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:45:21,125 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:26,154 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:31,182 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:32,851 DEBUG   SenderThread:8348 [sender.py:send():382] send: stats
+2023-12-12 13:45:32,941 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:45:32,941 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:45:32,979 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:45:37,078 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:42,108 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:47,133 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:47,969 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:45:47,969 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:45:47,986 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:45:53,121 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:45:58,160 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:46:02,873 DEBUG   SenderThread:8348 [sender.py:send():382] send: stats
+2023-12-12 13:46:02,977 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:46:02,978 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:46:02,978 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:46:04,130 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:46:09,158 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:46:14,174 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:46:17,978 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:46:17,978 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:46:17,996 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:46:20,100 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:46:25,148 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:46:30,178 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
+2023-12-12 13:46:32,879 DEBUG   SenderThread:8348 [sender.py:send():382] send: stats
+2023-12-12 13:46:32,982 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-12 13:46:32,982 DEBUG   SenderThread:8348 [sender.py:send_request():409] send_request: stop_status
+2023-12-12 13:46:33,018 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-12 13:46:36,146 DEBUG   HandlerThread:8348 [handler.py:handle_request():146] handle_request: status_report
