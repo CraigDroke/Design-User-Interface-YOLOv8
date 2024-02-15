@@ -33,7 +33,7 @@ def build_train_interface():
         
         start_but.click(fn=interface_train,inputs=[is_finetune, official_dataset],outputs=[])
         #login_but.click(fn=interface_login,inputs=[logger],outputs=[])
-        login_but.click(fn=interface_train_tensorboard,inputs=[offical_pretrained,official_dataset],outputs=[])
+        login_but.click(fn=interface_login,inputs=[logger,offical_pretrained,official_dataset],outputs=[])
             
     return demo
 

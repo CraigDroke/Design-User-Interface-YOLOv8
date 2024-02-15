@@ -1,6 +1,6 @@
 # Abstracted file for running the interface. Can run from command line or through debugger.
 
-from interface.detect_interface import build_detect_interface
+from interface.detect_interface import DetectInterface
 from interface.train_interface import build_train_interface
 from interface.resources_interface import build_resources_interface
 from interface.bio_interface import build_bio_interface 
@@ -8,7 +8,7 @@ import gradio as gr
 from interface.defaults import shared_theme
 
 def build_main_interface():
-    detect = build_detect_interface()
+    detect = DetectInterface().get_interface()
     train = build_train_interface()
     resources = build_resources_interface()
     bio = build_bio_interface()
@@ -29,4 +29,4 @@ def build_main_interface():
 if __name__== "__main__" :
     # run_main_interface()
     demo = build_main_interface()
-    demo.queue().launch()
+    demo.queue().launch(debug=True)
