@@ -17,7 +17,7 @@ run = count_train_folders('C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect')
 
 
 def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agnostic,img_size,viz,get_class_name, get_boundingbox):
-    print("source: ", source)
+    #print("source: ", source)
     global run, output_string
     class_ids = []
     precentages = []
@@ -31,6 +31,9 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
         if not weights.endswith(".pt"):
             weights = weights + ".pt"
         model = YOLO(weights)  # Load an official Detect model
+
+
+
     if isinstance(source, np.ndarray):
         if get_class_name == []:
             get_class_name = None
@@ -55,14 +58,14 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
             return [results[0].plot(), output_string]
             
         
-
-    elif source.endswith(".mp4"):
+    
+    else:
         cap = cv2.VideoCapture(source)
         # Get the properties of the input video
         input_fps = cap.get(cv2.CAP_PROP_FPS)
         input_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         input_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        output_path = "Tracked_" + source
+        output_path = "Tracked_" + source.split("\\")[-1]
         # Output video writer. Must have same frame rate, height, and width as the input video
         output = cv2.VideoWriter(output_path, cv2.VideoWriter_fourcc(*'mp4v'), input_fps, (input_width, input_height))
     
@@ -88,8 +91,8 @@ def interface_detect(source,weights,thres,pretrained,user_iou,user_det, get_agno
         output.release()
         cap.release()
         cv2.destroyAllWindows()
-        return output_path
-    else:
-        raise ValueError("Invalid source type")
+        return [output_path,""]
+    #else:
+        #raise ValueError("Invalid source type")
     
 run = run
