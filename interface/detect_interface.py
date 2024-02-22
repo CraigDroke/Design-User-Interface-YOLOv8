@@ -4,8 +4,13 @@ from interface.defaults import shared_theme
 import skvideo.io
 import numpy as np
 from ffmpeg import FFmpeg
+from time import sleep
 
 class_choices = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+
+
+
+
 class DetectInterface():
     def __init__(self):
         self.demo = None
@@ -13,6 +18,7 @@ class DetectInterface():
         self.output_media = None
         self.detect_inputs = None
 
+    def build_detect_interface(self):
         # Gradio Interface Code
         with gr.Blocks(theme=shared_theme) as demo:
             gr.Markdown(
@@ -36,8 +42,7 @@ class DetectInterface():
                 # Default input video: Not visible, Upload from computer
                 input_vid = gr.Video(sources=['upload','webcam'],label="Input Video",
                                     show_share_button=True,interactive=True,visible=False)
-                #print(input_vid)
-                
+
                 # Default Boxed output video: Not visible
                 output_box_vid = gr.Video(label="Output Video",show_share_button=True,visible=False)
                 show_predictions = gr.Textbox(label = 'Top Object Predictions:',visible = True, interactive= False)
@@ -75,19 +80,18 @@ class DetectInterface():
                     get_visualize = gr.Checkbox(label = "Visualize Model Features", info = "Shows the features of the image the model uses for classification", show_label= True, interactive = True, visible = True)
                     get_agnostic = gr.Checkbox(label= "Class Agnostic NMS",info = "Will set a bouning box around all objects, including unknown items", show_label = True, interactive = True, visible = True)
 
+
                 update_list = [input_im,output_box_im,input_vid,output_box_vid]
                 self.input_media = input_im 
-                output_media = [output_box_im,show_predictions]
-                self.detect_inputs = [self.input_media,get_weights,get_threshold,pretrained_file,get_iou,get_max_det, get_agnostic,get_size,get_visualize,get_class_name, get_boundingbox]
-
-            
-
-
+                self.output_media = [output_box_im,output_box_vid,show_predictions]
+                self.detect_inputs = [input_im, input_vid, get_weights,get_threshold,pretrained_file,get_iou,get_max_det, get_agnostic,get_size,get_visualize,get_class_name, get_boundingbox]
+                
             def change_input_type(file_type):
                 if file_type == 'Image':
-                    self.input_media = input_im
-                    self.detect_inputs = [self.input_media, get_weights, get_threshold, pretrained_file, get_iou, get_max_det, get_agnostic, get_size, get_visualize, get_class_name, get_boundingbox]
-                    self.output_media = [output_box_im, show_predictions]
+                    # self.input_media = input_im
+                    # self.detect_inputs = [self.input_media, get_weights, get_threshold, pretrained_file, get_iou, get_max_det, get_agnostic, get_size, get_visualize, get_class_name, get_boundingbox]
+                    # self.output_media = [output_box_im, show_predictions]
+                    # self.change_input_type(input_im, output_box_im)
                     return {
                         input_im: gr.Image(visible=True),
                         output_box_im: gr.Image(visible=True),
@@ -95,21 +99,18 @@ class DetectInterface():
                         output_box_vid: gr.Video(visible=False)
                     }
                 elif file_type == 'Video':
+                    # Define a function to update detect_inputs
+                    # self.input_media = input_vid
+                    # self.detect_inputs = [self.input_media, get_weights, get_threshold, pretrained_file, get_iou, get_max_det, get_agnostic, get_size, get_visualize, get_class_name, get_boundingbox]
+                    # self.output_media = [output_box_vid, show_predictions]
+                    # self.change_input_type(input_vid, output_box_vid)
                     return {
-                    input_im: gr.Image(visible=False),
-                    output_box_im: gr.Image(visible=False),
-                    input_vid: gr.Video(visible=True),  # Ensure input_vid remains Video type
-                    output_box_vid: gr.Video(visible=True)
-                }
-
-            def video_upload():
+                        input_im: gr.Image(visible=False),
+                        output_box_im: gr.Image(visible=False),
+                        input_vid: gr.Video(visible=True),  # Ensure input_vid remains Video type
+                        output_box_vid: gr.Video(visible=True)
+                    }
                 
-                temp = str(input_vid.value['video']['path']) # Assign input_vid directly
-                print("Name: ",temp)
-                self.detect_inputs = [str(temp), get_weights, get_threshold, pretrained_file, get_iou, get_max_det, get_agnostic, get_size, get_visualize, get_class_name, get_boundingbox]
-                self.output_media = [output_box_vid, show_predictions]
-
-        
             def change_viz(get_visualize):
                 if get_visualize:
                     return {
@@ -119,14 +120,19 @@ class DetectInterface():
                     return {
                         show_predictions: gr.Textbox(visible=True)
                     }
-            
-            input_vid.upload(fn=video_upload)
             # When start button is clicked, the run_all method is called
-            start_but.click(interface_detect, inputs=self.detect_inputs, outputs=output_media)
+            start_but.click(interface_detect, inputs=self.detect_inputs, outputs=self.output_media)
             # When these settings are changed, the change_file_type method is called
             file_type.input(change_input_type, show_progress=True, inputs=[file_type], outputs=update_list)
             get_visualize.input(change_viz,inputs=get_visualize,outputs=show_predictions)
+            demo.load(change_input_type, show_progress=True, inputs=[file_type], outputs=update_list)
             self.demo = demo
+            
+    def change_input_type(self, input, output):
+        self.input_media = input
+        self.detect_inputs[0] = input
+        self.output_media[0] = output
 
     def get_interface(self):
+        self.build_detect_interface()
         return self.demo
