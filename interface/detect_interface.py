@@ -81,7 +81,7 @@ class DetectInterface():
                     get_agnostic = gr.Checkbox(label= "Class Agnostic NMS",info = "Will set a bouning box around all objects, including unknown items", show_label = True, interactive = True, visible = True)
 
 
-                update_list = [input_im,output_box_im,input_vid,output_box_vid]
+                update_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions]
                 self.input_media = input_im 
                 self.output_media = [output_box_im,output_box_vid,show_predictions]
                 self.detect_inputs = [input_im, input_vid, get_weights,get_threshold,pretrained_file,get_iou,get_max_det, get_agnostic,get_size,get_visualize,get_class_name, get_boundingbox]
@@ -96,7 +96,8 @@ class DetectInterface():
                         input_im: gr.Image(visible=True),
                         output_box_im: gr.Image(visible=True),
                         input_vid: gr.Video(visible=False),  # Ensure input_vid remains Video type
-                        output_box_vid: gr.Video(visible=False)
+                        output_box_vid: gr.Video(visible=False),
+                        show_predictions: gr.Textbox(visible=True)
                     }
                 elif file_type == 'Video':
                     # Define a function to update detect_inputs
@@ -108,7 +109,8 @@ class DetectInterface():
                         input_im: gr.Image(visible=False),
                         output_box_im: gr.Image(visible=False),
                         input_vid: gr.Video(visible=True),  # Ensure input_vid remains Video type
-                        output_box_vid: gr.Video(visible=True)
+                        output_box_vid: gr.Video(visible=True),
+                        show_predictions: gr.Textbox(visible=False)
                     }
                 
             def change_viz(get_visualize):
