@@ -20,19 +20,19 @@ def count_train_folders(directory):
 
 count = count_train_folders('C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect')
 
-def interface_login(logger,pretrained,dataset):
+def interface_login(logger,pretrained,dataset,epochs,key):
     if logger == 'WANDB':
         result = wandb.login()
+        subprocess.run(key, shell=True)
+        
         if result:
             gr.Info("Logged in to WANDB")
         else:
             gr.Warning("Failed to log in to WANDB")
-        interface_train_wandb('yolov8', pretrained, dataset, 2, 640)
-    elif logger == 'ClearML':
-        pass
+        interface_train_wandb('yolov8', pretrained, dataset, epochs, 640)
     elif logger == 'Tensorboard':
         gr.Info("Logged in to Tensorboard")
-        interface_train_tensorboard(pretrained, dataset, 2, 640)
+        interface_train_tensorboard(pretrained, dataset, epochs, 640)
         
     
 
