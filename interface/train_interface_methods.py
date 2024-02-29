@@ -9,7 +9,9 @@ import webbrowser
 import time
 from ultralytics import YOLO
 
+dirname = os.path.dirname(__file__)
 
+dirname = dirname.split("Clinic_2")[0] + "Clinic_2"
 
 def count_train_folders(directory):
     count = 0
@@ -18,7 +20,7 @@ def count_train_folders(directory):
             count += 1
     return count
 
-count = count_train_folders('C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect')
+count = count_train_folders(os.path.join(dirname, 'runs', 'detect'))
 
 def interface_login(logger,pretrained,dataset,epochs,key):
     if logger == 'WANDB':
@@ -41,8 +43,8 @@ def interface_finetune():
     model = YOLO('yolov8n.pt')  # Load an official Detect model
     return model
     
-def interface_train(is_fintune=False, dataset=None, epochs=2, imgsz=640):
-    model = YOLO('yolov8n.yaml')
+def interface_train(model_name,is_fintune=False, dataset=None, epochs=2, imgsz=640):
+    model = YOLO(model_name)
     if is_fintune:
         model = interface_finetune()
     results = model.train(data=dataset + ".yaml", epochs=epochs, imgsz=imgsz)
@@ -70,6 +72,7 @@ def interface_train_tensorboard(model_name, dataset_name, epochs=2, imgsz=640):
     model = YOLO(f"{model_name}")
     
     model.train(data=dataset_name + ".yaml", epochs=epochs, imgsz=imgsz)
-    command = f"python -m tensorboard.main --logdir=C:\\Users\\modon\\Documents\\Clinic_2\\runs\\detect\\train{count}"
+    tb_dir = os.path.join(dirname,"runs","detect",f"train{count}")
+    command = f"python -m tensorboard.main --logdir={tb_dir}"
     subprocess.run(command, shell=True)
     gr.Info("Results logged to Tensorboard")

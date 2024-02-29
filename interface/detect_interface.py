@@ -116,7 +116,8 @@ class DetectInterface():
             def change_viz(get_visualize):
                 if get_visualize:
                     return {
-                        show_predictions: gr.Textbox(visible=False)
+                        show_predictions: gr.Textbox(visible=False),
+                         
                     }
                 else:
                     return {
