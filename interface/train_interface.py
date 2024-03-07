@@ -54,9 +54,9 @@ def build_train_interface():
         
 
 
-        start_but.click(fn=interface_train,inputs=[pretrained,is_finetune, dataset,epochs],outputs=[])
+        start_but.click(fn=interface_train,inputs=[is_finetune,epochs],outputs=[])
         #login_but.click(fn=interface_login,inputs=[logger],outputs=[])
-        login_but.click(fn=interface_login,inputs=[logger,pretrained,dataset,epochs,key],outputs=[])
+        login_but.click(fn=interface_login,inputs=[logger,epochs,key],outputs=[])
 
         
         custom_pretrained.upload(fn = update_pretrained,inputs = [custom_pretrained,official_pretrained],outputs = [])

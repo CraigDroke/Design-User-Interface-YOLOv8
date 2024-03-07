@@ -1,7 +1,7 @@
 import gradio as gr
 from interface.detect_interface_methods import interface_detect
 from interface.defaults import shared_theme
-import skvideo.io
+#import skvideo.io
 import numpy as np
 from ffmpeg import FFmpeg
 from time import sleep
