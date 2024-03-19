@@ -2,8 +2,10 @@ import gradio as gr
 from interface.defaults import shared_theme
 from interface.train_interface_methods import interface_train, interface_login, interface_train_tensorboard
 
-pretrained = ""
-dataset = ""
+# Define global variables
+pretrained = gr.File()
+dataset = gr.File()
+
 def build_train_interface():
     with gr.Blocks(theme=shared_theme) as demo:
         gr.Markdown(
@@ -17,15 +19,15 @@ def build_train_interface():
             
             is_offical_pretrained = gr.Checkbox(label="Official",info="Check this box if you want to train an official model",visible=True,interactive=True,value=True)
             epochs = gr.Slider(label="Epochs",minimum=1,maximum=10,step=1,value=2,visible=True,interactive=True)
-            custom_pretrained = gr.File(label="Pretrained Model Weights",file_count='single',type='binary',
+            custom_pretrained = gr.File(label="Pretrained Model Weights",file_count='single',type='filepath',
                                     file_types=['.pt'],visible=True,show_label=True,interactive=True)
             official_pretrained = gr.Dropdown(label="Pretrained Model",choices=["yolov8n.pt"],visible=True,interactive=True)
             
         with gr.Row() as dataset_row:
             is_official_dataset = gr.Checkbox(label="Official",info="Check this box if you want to use an official dataset",visible=True,interactive=True,value=True)
-            custom_dataset = gr.File(label="Custom Dataset",file_count='single',type='binary',
+            custom_dataset = gr.File(label="Custom Dataset",file_count='single',type='filepath',
                                     file_types=['.zip'],visible=True,show_label=True,interactive=True)
-            official_dataset = gr.Dropdown(label="Dataset",choices=["coco128"],visible=True,interactive=True)
+            official_dataset = gr.Dropdown(label="Dataset",choices=["coco128", "coco8"],visible=True,interactive=True)
 
         # Row for start & clear buttons
         with gr.Row() as buttons:
@@ -37,33 +39,39 @@ def build_train_interface():
             login_but = gr.Button(value="Login")
             key = gr.Textbox(label="API Key",placeholder="Enter your API key",visible=True,interactive=True)
         
-        def update_pretrained(custom_pretrained,official_pretrained):
+        # Define click actions
+        start_but.click(fn=interface_train, inputs=[pretrained, is_finetune, dataset, epochs], outputs=[])
+        login_but.click(fn=interface_login, inputs=[logger, pretrained, dataset, epochs, key], outputs=[])
+        
+        # Define update functions for pretrained model and dataset
+        def update_pretrained(custom_pretrained, official_pretrained):
+            global pretrained
             if custom_pretrained is not None:
                 pretrained = custom_pretrained
-            else:
+            elif official_pretrained is not None:
                 pretrained = official_pretrained
 
-            print(f"Model:{pretrained}")
+            print(f"Model: {pretrained}")
 
-
-        def update_dataset(custom_dataset,official_dataset):
+        def update_dataset(custom_dataset, official_dataset):
+            global dataset
             if custom_dataset is not None:
                 dataset = custom_dataset
-            else:
+            elif official_dataset is not None:
                 dataset = official_dataset
-        
+
+            print(f"Dataset: {dataset}")
 
 
-        start_but.click(fn=interface_train,inputs=[is_finetune,epochs],outputs=[])
-        #login_but.click(fn=interface_login,inputs=[logger],outputs=[])
-        login_but.click(fn=interface_login,inputs=[logger,epochs,key],outputs=[])
 
-        
-        custom_pretrained.upload(fn = update_pretrained,inputs = [custom_pretrained,official_pretrained],outputs = [])
-        custom_dataset.upload(fn = update_dataset,inputs = [custom_dataset,official_dataset],outputs = [])
-        official_pretrained.change(fn = update_pretrained,inputs = [custom_pretrained,official_pretrained],outputs = [])
-        official_dataset.change(fn = update_dataset,inputs = [custom_dataset,official_dataset],outputs = [])
+        # Connect file upload and dropdown change events to update functions
+        custom_pretrained.upload(fn=update_pretrained, inputs=[custom_pretrained, official_pretrained], outputs=[])
+        custom_dataset.upload(fn=update_dataset, inputs=[custom_dataset, official_dataset], outputs=[])
+        official_pretrained.change(fn=update_pretrained, inputs=[custom_pretrained, official_pretrained], outputs=[])
+        official_dataset.change(fn=update_dataset, inputs=[custom_dataset, official_dataset], outputs=[])
+
     return demo
 
-if __name__== "__main__" :
+if __name__ == "__main__":
     demo = build_train_interface()
+    demo.launch()

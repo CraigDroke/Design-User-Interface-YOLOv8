@@ -43,9 +43,10 @@ def interface_finetune():
     model = YOLO('yolov8n.pt')  # Load an official Detect model
     return model
     
-def interface_train(model_name,is_fintune=False, dataset=None, epochs=2, imgsz=640):
-    model = YOLO(model_name)
-    if is_fintune:
+def interface_train(model_name,is_finetune, dataset, epochs, imgsz=640):
+    model_name = os.path.basename(model_name)
+    model = YOLO(str(model_name))
+    if is_finetune:
         model = interface_finetune()
     results = model.train(data=dataset + ".yaml", epochs=epochs, imgsz=imgsz)
     
