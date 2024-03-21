@@ -5,8 +5,6 @@ import wandb
 from torch.utils.tensorboard import SummaryWriter
 import os
 import subprocess
-import webbrowser
-import time
 from ultralytics import YOLO
 
 dirname = os.path.dirname(__file__)
@@ -38,18 +36,18 @@ def interface_login(logger,pretrained,dataset,epochs):
         
     
 
-def interface_finetune():
-    # Load a pretrained YOLOv8n model
-    model = YOLO('yolov8n.pt')  # Load an official Detect model
-    return model
+# def interface_finetune():
+#     # Load a pretrained YOLOv8n model
+#     model = YOLO('yolov8n.pt')  # Load an official Detect model
+#     return model
     
 def interface_train(model_name, dataset, epochs, imgsz=640):
     print("In train function")
     #model_name = os.path.basename(model_name)
-    model = YOLO(str(model_name))
+    model = YOLO(model_name)
     # if is_finetune:
     #     model = YOLO('yolov8n.pt')
-    results = model.train(data=dataset, epochs=epochs, imgsz=imgsz)
+    model.train(data=dataset, epochs=epochs, imgsz=imgsz)
     
 def interface_train_wandb(project_name, model_name, dataset_name, epochs, imgsz=640):
     # Step 1: Initialize a Weights & Biases run

@@ -46,7 +46,7 @@ class DetectInterface():
                 # Default Boxed output video: Not visible
                 output_box_vid = gr.Video(label="Output Video",show_share_button=True,visible=False)
                 show_predictions = gr.Textbox(label = 'Top Object Predictions:',visible = True, interactive= False)
-
+                attr_box = gr.Image(type = 'numpy',label = "Attribution Map",visible = False, interactive = False)
             # List of components for clearing
             clear_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions]
             
@@ -81,9 +81,9 @@ class DetectInterface():
                     get_agnostic = gr.Checkbox(label= "Class Agnostic NMS",info = "Will set a bouning box around all objects, including unknown items", show_label = True, interactive = True, visible = True)
 
 
-                update_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions]
+                update_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions,attr_box]
                 self.input_media = input_im 
-                self.output_media = [output_box_im,output_box_vid,show_predictions]
+                self.output_media = [output_box_im,output_box_vid,show_predictions,attr_box]
                 self.detect_inputs = [input_im, input_vid, get_weights,get_threshold,pretrained_file,get_iou,get_max_det, get_agnostic,get_size,get_visualize,get_class_name, get_boundingbox]
                 
             def change_input_type(file_type):
@@ -97,7 +97,8 @@ class DetectInterface():
                         output_box_im: gr.Image(visible=True),
                         input_vid: gr.Video(visible=False),  # Ensure input_vid remains Video type
                         output_box_vid: gr.Video(visible=False),
-                        show_predictions: gr.Textbox(visible=True)
+                        show_predictions: gr.Textbox(visible=True),
+                        attr_box: gr.Image(visible=False)
                     }
                 elif file_type == 'Video':
                     # Define a function to update detect_inputs
@@ -110,7 +111,8 @@ class DetectInterface():
                         output_box_im: gr.Image(visible=False),
                         input_vid: gr.Video(visible=True),  # Ensure input_vid remains Video type
                         output_box_vid: gr.Video(visible=True),
-                        show_predictions: gr.Textbox(visible=False)
+                        show_predictions: gr.Textbox(visible=False),
+                        attr_box: gr.Image(visible=False)
                     }
                 
             def change_viz(get_visualize):
@@ -123,6 +125,17 @@ class DetectInterface():
                     return {
                         show_predictions: gr.Textbox(visible=True)
                     }
+            def set_attr():
+                return {
+                    input_im: gr.Image(visible=False),
+                    output_box_im: gr.Image(visible=True),
+                    input_vid: gr.Video(visible=False),  # Ensure input_vid remains Video type
+                    output_box_vid: gr.Video(visible=False),
+                    show_predictions: gr.Textbox(visible=True),
+                    attr_box: gr.Image(visible=True)
+                }
+
+
             # When start button is clicked, the run_all method is called
             start_but.click(interface_detect, inputs=self.detect_inputs, outputs=self.output_media)
             # When these settings are changed, the change_file_type method is called
@@ -130,7 +143,9 @@ class DetectInterface():
             get_visualize.input(change_viz,inputs=get_visualize,outputs=show_predictions)
             demo.load(change_input_type, show_progress=True, inputs=[file_type], outputs=update_list)
             self.demo = demo
-            
+            start_but.click(fn=set_attr,inputs = [],outputs = update_list)
+
+
     def change_input_type(self, input, output):
         self.input_media = input
         self.detect_inputs[0] = input
@@ -139,3 +154,5 @@ class DetectInterface():
     def get_interface(self):
         self.build_detect_interface()
         return self.demo
+    
+    

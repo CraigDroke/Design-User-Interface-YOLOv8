@@ -29,6 +29,7 @@ def build_resources_interface():
         5. Click the "Start" button to begin, or the "Login" button if using one to start training.
 
         ### Understanding the Repository (Deep-Dive into the File Structure)
+        
         | Folder: interface       | Summary                                                                       |
         |-------------------------|-------------------------------------------------------------------------------|
         | bio_interface           | This file contains the biographies of all students who worked on the project  |
