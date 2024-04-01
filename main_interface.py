@@ -29,4 +29,4 @@ def build_main_interface():
 if __name__== "__main__" :
     # run_main_interface()
     demo = build_main_interface()
-    demo.queue().launch(debug=True)
+    demo.queue().launch(debug=True, share=False)

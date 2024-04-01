@@ -13,3 +13,5 @@ wandb/*
 # Other ignores
 **/__pycache__/
 Images/*
+/test/*
+/dataset/*
