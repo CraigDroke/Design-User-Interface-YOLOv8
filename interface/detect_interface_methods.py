@@ -7,6 +7,7 @@ import random
 import torch
 import matplotlib.pyplot as plt
 from ultralytics.models.yolo.detect import DetectionTrainer
+from ultralytics.utils import (RANK, DEFAULT_CFG)
 from PIL import Image
 
 class_names = {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', 8: 'boat', 9: 'traffic light', 10: 'fire hydrant', 11: 'stop sign', 12: 'parking meter', 13: 'bench',14: 'bird', 15: 'cat',16: 'dog',17: 'horse',18: 'sheep',19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra',23: 'giraffe', 24: 'backpack', 25: 'umbrella', 26: 'handbag', 27: 'tie', 28: 'suitcase', 29: 'frisbee', 30: 'skis', 31: 'snowboard', 32: 'sports ball', 33: 'kite', 34: 'baseball bat', 35: 'baseball glove', 36: 'skateboard', 37: 'surfboard', 38: 'tennis racket', 39: 'bottle', 40: 'wine glass', 41: 'cup', 42: 'fork', 43: 'knife', 44: 'spoon', 45: 'bowl', 46: 'banana', 47: 'apple', 48: 'sandwich', 49: 'orange', 50: 'broccoli', 51: 'carrot', 52: 'hot dog', 53: 'pizza', 54: 'donut', 55: 'cake', 56: 'chair', 57: 'couch', 58: 'potted plant', 59: 'bed', 60: 'dining table', 61: 'toilet', 62: 'tv', 63: 'laptop', 64: 'mouse', 65: 'remote', 66: 'keyboard', 67: 'cell phone', 68: 'microwave',69: 'oven',70: 'toaster',71: 'sink',72: 'refrigerator',73: 'book',74: 'clock',75: 'vase',76: 'scissors',77: 'teddy bear',78: 'hair drier',79: 'toothbrush'}
@@ -14,61 +15,42 @@ dirname = os.path.dirname(__file__)
 dirname = dirname.split("Clinic_2")[0] + "Clinic_2"
 #print (dirname)
 
-
-
-def my_train(model,trainer,img):
-    imgt = torch.tensor(img,requires_grad=True, dtype=torch.float64)
+def my_train(model,trainer,imgt):
     model.trainer = trainer
     results = model.predict(imgt)
     arr = results[0].plot()
     for result in results:
-        img_width = imgt.shape[2]
-        img_height = imgt.shape[3]
-        open('dataset/labels/train/your_file.txt', 'w').close()
-        with open('dataset/labels/train/your_file.txt', 'a') as f:
+        open('dataset\\train\labels\your_file.txt', 'w').close()
+        with open('dataset\\train\labels\your_file.txt', 'a') as f:
             for box in result.boxes:
                 class_id = int(box.cls)
-                coords = box.xywh.cpu().tolist()
-                dw = 1.0 / img_width
-                dh = 1.0 / img_height
-                x = (coords[0][0] + coords[0][2]) / 2.0
-                y = (coords[0][1] + coords[0][3]) / 2.0
-                w = coords[0][2] - coords[0][0]
-                h = coords[0][3] - coords[0][1]
-                x = x * dw
-                w = w * dw
-                y = y * dh
-                h = h * dh
+                coords = box.xywhn.cpu().tolist()
+                x = coords[0][0]
+                y = coords[0][1]
+                w = coords[0][2]
+                h = coords[0][3]
                 yolo_format = "{} {} {} {} {}\n".format(class_id, x, y, w, h)
                 f.write(yolo_format)
 
     for result in results:
-        img_width = imgt.shape[2]
-        img_height = imgt.shape[3]
-        open('dataset/labels/train/your_file1.txt', 'w').close()
-        with open('dataset/labels/train/your_file1.txt', 'a') as f:
+        open('dataset\\train\labels\your_file1.txt', 'w').close()
+        with open('dataset\\train\labels\your_file1.txt', 'a') as f:
             for box in result.boxes:
                 class_id = int(box.cls)
-                coords = box.xywh.cpu().tolist()
-                dw = 1.0 / img_width
-                dh = 1.0 / img_height
-                x = (coords[0][0] + coords[0][2]) / 2.0
-                y = (coords[0][1] + coords[0][3]) / 2.0
-                w = coords[0][2] - coords[0][0]
-                h = coords[0][3] - coords[0][1]
-                x = x * dw
-                w = w * dw
-                y = y * dh
-                h = h * dh
+                coords = box.xywhn.cpu().tolist()
+                x = coords[0][0]
+                y = coords[0][1]
+                w = coords[0][2]
+                h = coords[0][3]
                 yolo_format = "{} {} {} {} {}\n".format(class_id, x, y, w, h)
                 f.write(yolo_format)
 
 
     im = Image.fromarray(arr)
-    im.save("dataset/train/your_file.jpeg")
-    im.save("dataset/train/your_file1.jpeg")
+    im.save("dataset/train/images/your_file.jpeg")
+    im.save("dataset/train/images/your_file1.jpeg")
 
-    tr = model.train(epochs=2,batch=1,data='data.yaml',plots=False)
+    tr = model.train(epochs=5,data='data.yaml',plots=False)
     return tr.loss_items[1]
     print(tr)
     
@@ -185,7 +167,6 @@ def interface_detect(source_im,source_vid,weights,thres,pretrained,user_iou,user
     H_xtra = source.shape[3] % 32
     source = source[:,:,:W - W_xtra,:H - H_xtra]
     print(source.shape)
-
     if source is not None:
         if get_class_name == []:
             get_class_name = None
