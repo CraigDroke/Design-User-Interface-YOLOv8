@@ -17,15 +17,15 @@ def build_resources_interface():
 
         ## Using the Detect Interface
         1. Start by uploading a picture using any of the 3 inputs. These are webcam (device camera), image import, and drag and drop functionality. 
-        2. Once the image is uploaded, you can adjust settings such as the confidence threshold and the non-maximum suppression threshold.
+        2. Once the image is uploaded, you can adjust settings such as the confidence threshold and whether or not to use non-maximum suppression.
         3. Once satisfied with the settings, click the "Start" button to see the results of the YOLOv8 model.
         4. This process can be repeated for videos as well.
 
         ## Using the Train Interface
-        1. To use the training interface, start by determining if you want to use an offical model, use a pretrained model, and how many epochs you want to train for.
+        1. To use the training interface, start by determining if you want to use an offical or custom model and how many epochs you want to train for.
         2. Next, either select an offical model from the list, or upload your own weights.
         3. Then, either select an offical dataset from the list, or upload your own dataset.
-        4. If you want to use a logger, select the logger you want to use and enter your API key.
+        4. If you want to use a logger, select the logger you want to use.
         5. Click the "Start" button to begin, or the "Login" button if using one to start training.
 
         ### Understanding the Repository (Deep-Dive into the File Structure)

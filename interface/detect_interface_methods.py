@@ -171,8 +171,8 @@ def interface_detect(source_im,source_vid,weights,thres,pretrained,user_iou,user
         if get_class_name == []:
             get_class_name = None
         results = model.predict(source=source,conf=thres/100, iou = user_iou/100,max_det = user_det, agnostic_nms = get_agnostic,imgsz = img_size,visualize = viz,classes = get_class_name,boxes=False,save= True,project = "test")
-        loss = my_train(model,DetectionTrainer,source)
-        print(loss)
+        my_train(model,DetectionTrainer,source)
+        #print(loss)
         # print(train)
         # print(results)
         # print("Plot:")
@@ -271,3 +271,4 @@ def interface_detect(source_im,source_vid,weights,thres,pretrained,user_iou,user
 
     
 run = run
+
