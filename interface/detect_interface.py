@@ -1,10 +1,13 @@
 import gradio as gr
-from interface.detect_interface_methods import interface_detect
+from interface.detect_interface_methods import interface_detect 
 from interface.defaults import shared_theme
 #import skvideo.io
 import numpy as np
 from ffmpeg import FFmpeg
 from time import sleep
+from interface.detect_interface_methods import park_demo
+from interface.detect_interface_methods import cars_demo
+from interface.detect_interface_methods import video_demo
 
 class_choices = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
 
@@ -46,7 +49,7 @@ class DetectInterface():
                 # Default Boxed output video: Not visible
                 output_box_vid = gr.Video(label="Output Video",show_share_button=True,visible=False)
                 show_predictions = gr.Textbox(label = 'Top Object Predictions:',visible = True, interactive= False)
-                attr_box = gr.Image(type = 'numpy',label = "Attribution Map",visible = False, interactive = False)
+                #attr_box = gr.Image(type = 'numpy',label = "Attribution Map",visible = False, interactive = False)
             # List of components for clearing
             clear_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions]
             
@@ -55,6 +58,11 @@ class DetectInterface():
                 start_but = gr.Button(value="Start")
                 clear_but = gr.ClearButton(value='Clear All',components=clear_list,
                         interactive=True,visible=True)
+            
+            with gr.Row() as demo_buttons:
+                park_but = gr.Button(value="Park Demo")
+                cars_but = gr.Button(value="Cars Demo")
+                video_but = gr.Button(value="Video Demo")
             
             # Settings for model 
             with gr.Accordion("Model Options") as modparam_accordion:
@@ -72,7 +80,7 @@ class DetectInterface():
                 with gr.Accordion("Advanced", open=False) as modparam_accordion:
                     get_iou = gr.Slider(label="IOU Threshold",info="Slide to the desired threshold. This measures the overlap between bounding boxes, the lower the value the more detections",value = 50,minimum=0,maximum=100,step=1,show_label=True,interactive=True,visible=True,container=True)
                     get_max_det = gr.Slider(label="Maximum Detections",info="Slide to the desired number. This value sets the maximum number of bounding boxes allowed",value = 300,minimum=0,maximum=1000,step=10,show_label=True,interactive=True,visible=True,container=True)
-                    get_size = gr.Slider(label="Image SIze",info="Slide to the desired image size. Must be between 32 and 4096",value = 640,minimum=32,maximum=4096,step=32,show_label=True,interactive=True,visible=True,container=True)
+                    get_size = gr.Slider(label="Image Size",info="Slide to the desired image size. Must be between 32 and 4096",value = 640,minimum=32,maximum=4096,step=32,show_label=True,interactive=True,visible=True,container=True)
                 
                 # visualize checkbox, agnostic checkbox, pretrained file
                 with gr.Accordion("Expert", open=False) as modparam_accordion:
@@ -81,9 +89,9 @@ class DetectInterface():
                     get_agnostic = gr.Checkbox(label= "Class Agnostic NMS",info = "Will set a bouning box around all objects, including unknown items", show_label = True, interactive = True, visible = True)
 
 
-                update_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions,attr_box]
+                update_list = [input_im,output_box_im,input_vid,output_box_vid,show_predictions]
                 self.input_media = input_im 
-                self.output_media = [output_box_im,output_box_vid,show_predictions,attr_box]
+                self.output_media = [output_box_im,output_box_vid,show_predictions]
                 self.detect_inputs = [input_im, input_vid, get_weights,get_threshold,pretrained_file,get_iou,get_max_det, get_agnostic,get_size,get_visualize,get_class_name, get_boundingbox]
                 
             def change_input_type(file_type):
@@ -98,7 +106,7 @@ class DetectInterface():
                         input_vid: gr.Video(visible=False),  # Ensure input_vid remains Video type
                         output_box_vid: gr.Video(visible=False),
                         show_predictions: gr.Textbox(visible=True),
-                        attr_box: gr.Image(visible=False)
+                        #attr_box: gr.Image(visible=False)
                     }
                 elif file_type == 'Video':
                     # Define a function to update detect_inputs
@@ -112,7 +120,7 @@ class DetectInterface():
                         input_vid: gr.Video(visible=True),  # Ensure input_vid remains Video type
                         output_box_vid: gr.Video(visible=True),
                         show_predictions: gr.Textbox(visible=False),
-                        attr_box: gr.Image(visible=False)
+                       # attr_box: gr.Image(visible=False)
                     }
                 
             def change_viz(get_visualize):
@@ -132,18 +140,21 @@ class DetectInterface():
                     input_vid: gr.Video(visible=False),  # Ensure input_vid remains Video type
                     output_box_vid: gr.Video(visible=False),
                     show_predictions: gr.Textbox(visible=True),
-                    attr_box: gr.Image(visible=True)
+                    #attr_box: gr.Image(visible=True)
                 }
 
 
             # When start button is clicked, the run_all method is called
             start_but.click(interface_detect, inputs=self.detect_inputs, outputs=self.output_media)
+            park_but.click(park_demo,inputs=[],outputs=self.output_media)
+            cars_but.click(cars_demo,inputs=[],outputs=self.output_media)
+            video_but.click(video_demo,inputs=[],outputs=self.output_media)
             # When these settings are changed, the change_file_type method is called
             file_type.input(change_input_type, show_progress=True, inputs=[file_type], outputs=update_list)
             get_visualize.input(change_viz,inputs=get_visualize,outputs=show_predictions)
             demo.load(change_input_type, show_progress=True, inputs=[file_type], outputs=update_list)
             self.demo = demo
-            start_but.click(fn=set_attr,inputs = [],outputs = update_list)
+            #start_but.click(fn=set_attr,inputs = [],outputs = update_list)
 
 
     def change_input_type(self, input, output):

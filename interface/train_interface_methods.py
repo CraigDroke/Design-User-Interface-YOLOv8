@@ -42,6 +42,7 @@ def interface_login(logger,pretrained,dataset,epochs):
 #     return model
     
 def interface_train(model_name, dataset, epochs, imgsz=640):
+    epochs=int(epochs)
     print("In train function")
     #model_name = os.path.basename(model_name)
     model = YOLO(model_name)

@@ -7,6 +7,7 @@ from interface.bio_interface import build_bio_interface
 import gradio as gr
 from interface.defaults import shared_theme
 
+
 def build_main_interface():
     detect = DetectInterface().get_interface()
     train = build_train_interface()

@@ -14,9 +14,12 @@ def build_train_interface():
         Train your own YOLOv8 model!
         """)
         
+
+
         with gr.Row() as finetune_row:
             #is_finetune = gr.Checkbox(label="Finetune",info="Check this box if you want to finetune a model")
             epochs = gr.Slider(label="Epochs",minimum=1,maximum=10,step=1,value=2,visible=True,interactive=True)
+            
             custom_pretrained = gr.File(label="Custom Model Weights",file_count='single',type='filepath',
                                     file_types=['.pt'],visible=True,show_label=True,interactive=True)
             official_pretrained = gr.Dropdown(label="Official Model",choices=["yolov8n.pt","yolov8x.pt","yolov9e.pt"],visible=True,interactive=True)
@@ -55,7 +58,7 @@ def build_train_interface():
                 dataset = official_dataset
 
             print(f"Dataset: {dataset}")
-
+            
 
 
         # Connect file upload and dropdown change events to update functions
@@ -63,9 +66,9 @@ def build_train_interface():
         custom_dataset.upload(fn=update_dataset, inputs=[custom_dataset, official_dataset], outputs=[])
         official_pretrained.change(fn=update_pretrained, inputs=[custom_pretrained, official_pretrained], outputs=[])
         official_dataset.change(fn=update_dataset, inputs=[custom_dataset, official_dataset], outputs=[])
-
+        #epochs.change(fn = clean_epochs, inputs=[epochs], outputs=[])
         # Define click actions
-        start_but.click(fn=interface_train, inputs=[pretrained, dataset, epochs], outputs=[])
+        start_but.click(fn=lambda: interface_train(model_name=pretrained, dataset=dataset, epochs=epochs), inputs=[], outputs=[])
         login_but.click(fn=interface_login, inputs=[logger, pretrained, dataset, epochs], outputs=[])
 
     return demo

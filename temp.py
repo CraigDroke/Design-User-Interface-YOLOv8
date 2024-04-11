@@ -12,10 +12,11 @@ from PIL import Image
 
 class_names = {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', 8: 'boat', 9: 'traffic light', 10: 'fire hydrant', 11: 'stop sign', 12: 'parking meter', 13: 'bench',14: 'bird', 15: 'cat',16: 'dog',17: 'horse',18: 'sheep',19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra',23: 'giraffe', 24: 'backpack', 25: 'umbrella', 26: 'handbag', 27: 'tie', 28: 'suitcase', 29: 'frisbee', 30: 'skis', 31: 'snowboard', 32: 'sports ball', 33: 'kite', 34: 'baseball bat', 35: 'baseball glove', 36: 'skateboard', 37: 'surfboard', 38: 'tennis racket', 39: 'bottle', 40: 'wine glass', 41: 'cup', 42: 'fork', 43: 'knife', 44: 'spoon', 45: 'bowl', 46: 'banana', 47: 'apple', 48: 'sandwich', 49: 'orange', 50: 'broccoli', 51: 'carrot', 52: 'hot dog', 53: 'pizza', 54: 'donut', 55: 'cake', 56: 'chair', 57: 'couch', 58: 'potted plant', 59: 'bed', 60: 'dining table', 61: 'toilet', 62: 'tv', 63: 'laptop', 64: 'mouse', 65: 'remote', 66: 'keyboard', 67: 'cell phone', 68: 'microwave',69: 'oven',70: 'toaster',71: 'sink',72: 'refrigerator',73: 'book',74: 'clock',75: 'vase',76: 'scissors',77: 'teddy bear',78: 'hair drier',79: 'toothbrush'}
 
-def my_train(model,trainer,imgt):
+def my_train(model,imgt):
     with torch.autograd.enable_grad():
         #model = YOLO(model)
         #model.trainer = trainer
+        imgt = imgt.requires_grad_(True)
         results = model.predict(imgt)
         for param in model.parameters():
             param.requires_grad = True
@@ -55,7 +56,7 @@ def my_train(model,trainer,imgt):
 
         tr = model.train(epochs=1,data='data.yaml')
         x = model.trainer.loss
-        return x
+        return results, x
         #print(tr)
     
     
@@ -127,7 +128,6 @@ def overlay_attr(img, mask, colormap: str = "jet", alpha: float = 0.7):
 
 
 
-
 #interface_detect(arr,None,"yolov8n.pt",50,"yolov8n.pt",50,50, False,640,False,None,True)
 
 def main():
@@ -142,15 +142,17 @@ def main():
     H = source.shape[3]
     W_xtra = source.shape[2] % 32
     H_xtra = source.shape[3] % 32
-    source = source[:,:,:W - W_xtra,:H - H_xtra]
+    source = source[:,:,:W - W_xtra,:H - H_xtra].requires_grad_(True)
 
-    class_loss = my_train(YOLO('yolov8n.pt'),DetectionTrainer,source)
-#     class_loss = source.clone()
-#     class_loss = temp.clone()
-# # Copy the gradients from temp to class_loss
-#     class_loss.grad = source.grad
-
-    grad = get_gradient(source,class_loss)
+    result,class_loss  = my_train(YOLO('yolov8n.pt'),source)
+    img = torch.tensor(result[0].plot(),dtype=torch.float64).cuda().unsqueeze(0).requires_grad_(True)
+    img = img[:]
+    # class_loss = class_loss.clone().detach().unsqueeze(0).cuda().requires_grad_(True)
+    # class_loss = class_loss[:]
+    
+    #grad = get_gradient(source,class_loss)
+    print(img,class_loss)
+    grad = torch.autograd.grad(result[0].boxes.data, source, retain_graph=True, create_graph=True)[0]
     overlayed = overlay_attr(source, grad)
     cv2.imshow("overlayed", overlayed)
 

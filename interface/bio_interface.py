@@ -34,10 +34,6 @@ def build_bio_interface():
 
             ### Senior Electrical and Computer Engineering Major at Rowan University. Work includes model training and interface development.
 
-            ## Asien Truong
-
-            ### Junior Mechanical Engineering Major at Rowan University. Work includes model training and integrating for adversarial attacks.
-
 
             
 
