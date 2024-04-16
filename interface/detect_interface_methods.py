@@ -28,10 +28,10 @@ def park_demo():
     return interface_detect(asarray(Image.open('C:\\Users\\modon\\Documents\\Clinic_2\\park.jpeg')),None,None,13,"yolov8x.pt",50,300,False,640,False,[],False)
 
 def cars_demo():
-    return interface_detect(asarray(Image.open('C:\\Users\\modon\\Documents\\Clinic_2\\cars.jpg')),None,None,20,"yolov8x.pt",50,300,False,640,False,[],True)
+    return interface_detect(asarray(Image.open('C:\\Users\\modon\\Documents\\Clinic_2\\cars.jpg')),None,None,20,"yolov8l.pt",50,300,False,640,False,[],True)
 
 def video_demo():
-    return interface_detect(None,'C:\\Users\\modon\\Documents\\Clinic_2\\test.mp4',None,50,"yolov8x.pt",50,300,False,640,False,[],True)
+    return interface_detect(None,'C:\\Users\\modon\\Documents\\Clinic_2\\ducks.mp4',None,50,"yolov8x.pt",50,300,False,640,False,[],True)
 
 def interface_detect(source_im,source_vid,weights,thres,pretrained,user_iou,user_det, get_agnostic,img_size,viz,get_class_name, get_boundingbox):
     

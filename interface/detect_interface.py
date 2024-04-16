@@ -144,10 +144,32 @@ class DetectInterface():
                 }
 
 
+            def demo_type():
+                return {
+                    input_im: gr.Image(visible=False),
+                    output_box_im: gr.Image(visible=False),
+                    input_vid: gr.Video(visible=True),  # Ensure input_vid remains Video type
+                    output_box_vid: gr.Video(visible=True),
+                    show_predictions: gr.Textbox(visible=False)
+                
+                }
+            
+            
+            # def viz_demo_type():
+            #     return {
+            #         output_box_im: gr.Image(visible=True),
+            #         show_predictions: gr.Textbox(visible=False)
+                    
+                
+            #     }
+            
+            
             # When start button is clicked, the run_all method is called
             start_but.click(interface_detect, inputs=self.detect_inputs, outputs=self.output_media)
             park_but.click(park_demo,inputs=[],outputs=self.output_media)
+            #cars_but.click(viz_demo_type,inputs=[],outputs=self.output_media)
             cars_but.click(cars_demo,inputs=[],outputs=self.output_media)
+            video_but.click(demo_type,inputs=[],outputs=self.output_media)
             video_but.click(video_demo,inputs=[],outputs=self.output_media)
             # When these settings are changed, the change_file_type method is called
             file_type.input(change_input_type, show_progress=True, inputs=[file_type], outputs=update_list)

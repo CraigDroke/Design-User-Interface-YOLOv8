@@ -20,9 +20,10 @@ def count_train_folders(directory):
 
 count = count_train_folders(os.path.join(dirname, 'runs', 'detect'))
 
-def interface_login(logger,pretrained,dataset,epochs):
+def interface_login(logger,pretrained,dataset,epochs,key):
     if logger == 'WANDB':
-        result = wandb.login()
+        print("Logging in to WANDB")
+        result = wandb.login(key=key)
         #subprocess.run(key, shell=True)
         
         if result:
@@ -42,7 +43,7 @@ def interface_login(logger,pretrained,dataset,epochs):
 #     return model
     
 def interface_train(model_name, dataset, epochs, imgsz=640):
-    epochs=int(epochs)
+    #epochs=int(epochs)
     print("In train function")
     #model_name = os.path.basename(model_name)
     model = YOLO(model_name)
@@ -68,6 +69,8 @@ def interface_train_wandb(project_name, model_name, dataset_name, epochs, imgsz=
 
     # Step 7: Finalize the W&B Run
     wandb.finish()
+    command = 'python3 -m wandb disabled'
+    subprocess.run(command, shell=True)
 
 def interface_train_tensorboard(model_name, dataset_name, epochs, imgsz=640):
     model = YOLO(f"{model_name}")
