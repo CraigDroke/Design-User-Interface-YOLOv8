@@ -31,6 +31,7 @@ def build_bio_interface():
             A junior Electrical and Computer Engineering student at Rowan University interested in Embedded Systems development. My work includes model detection settings and interface design.
 
             ### Chinedu Ike-Anyanwu
+<<<<<<< Updated upstream
 
             A senior Electrical and Computer Engineering Major at Rowan University. Works includes model training and interface development. Strives to further his education in robotics and AI.
 
@@ -45,7 +46,22 @@ def build_bio_interface():
             ### Kaitlyn Pounds
             
             Junior electrical and computer engineer. Work includes information organization/presentation and additional documentation.
+=======
+
+            A senior Electrical and Computer Engineering Major at Rowan University. Works includes model training and interface development. Strives to further his education in robotics and AI.
+
+            ### Ayo Overton 
+>>>>>>> Stashed changes
             
+            A Junior Electrical and Computer Engineering student at Rowan University interested in Circuit Design, Implementation, and Development. Portion of my work includes documentation and additional testing.
+            
+            ### Asien Truong
+            
+            Junior Mechanical Engineering Major at Rowan University interested in software development and aerospace engineering. Portion of my work includes adversarial attack training and documentation.
+
+            ### Kaitlyn Pounds
+            
+            Junior electrical and computer engineer. Work includes information organization/presentation and additional documentation.
 
 
             '''
